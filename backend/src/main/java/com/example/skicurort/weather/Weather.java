@@ -1,4 +1,3 @@
 package com.example.skicurort.weather;
 
-public class Weather {
-}
+public class Weather {}

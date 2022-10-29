@@ -1,4 +1,3 @@
 package com.example.skicurort.skiPass;
 
-public class SkiPass {
-}
+public class SkiPass {}

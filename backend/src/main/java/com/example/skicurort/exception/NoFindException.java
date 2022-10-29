@@ -1,4 +1,3 @@
 package com.example.skicurort.exception;
 
-public class NoFindException {
-}
+public class NoFindException {}

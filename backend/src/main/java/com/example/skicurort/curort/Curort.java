@@ -1,4 +1,3 @@
 package com.example.skicurort.curort;
 
-public class Curort {
-}
+public class Curort {}
