@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/curort")
@@ -39,7 +38,7 @@ public class CurortControler {
 
     curortService.updateDto(curortDTO, id);
 
-    return ResponseEntity.ok( curortDTO);
+    return ResponseEntity.ok(curortDTO);
   }
 
   @DeleteMapping("/{id}")
