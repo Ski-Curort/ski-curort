@@ -4,6 +4,7 @@ import com.example.skicurort.exception.NoIdException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import static com.example.skicurort.curort.CurortMapper.*;
 
 @Service
 @RequiredArgsConstructor
@@ -11,16 +12,17 @@ public class CurortService {
 
   private final CurortRepo curortRepo;
 
-  public void save(Curort curort) {
-    curortRepo.save(curort);
+  public void save(CurortDTO curortDto) {
+    curortRepo.save(mapToEntity(curortDto));
   }
 
-  public List<Curort> getAll() {
-    return curortRepo.findAll();
+  public List<CurortDTO> getAll() {
+    return mapToDTOs(curortRepo.findAll());
   }
 
-  public Curort findById(Long id) throws NoIdException {
-    return curortRepo.findById(id).orElseThrow(() -> new NoIdException(id));
+  public CurortDTO findById(Long id) throws NoIdException {
+
+    return mapToDTO(curortRepo.findById(id).orElseThrow(() -> new NoIdException(id)));
   }
 
   public void delete(Long id) throws NoIdException {

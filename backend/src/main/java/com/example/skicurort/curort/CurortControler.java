@@ -1,5 +1,6 @@
 package com.example.skicurort.curort;
 
+import com.example.skicurort.exception.Error;
 import com.example.skicurort.exception.NoIdException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.example.skicurort.curort.CurortMapper.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,41 +18,41 @@ public class CurortControler {
   private final CurortService curortService;
 
   @GetMapping("/")
-  List<CurortDTO> getAll() {
-    return mapToDTOs(curortService.getAll());
+  ResponseEntity<List<CurortDTO>> getAll() {
+    return ResponseEntity.ok(curortService.getAll());
   }
 
   @PostMapping("/")
   public ResponseEntity<CurortDTO> save(@RequestBody CurortDTO curortDto) {
 
-    curortService.save(mapToEntity(curortDto));
+    curortService.save(curortDto);
     return ResponseEntity.ok(curortDto);
   }
 
   @GetMapping("/{id}")
-  CurortDTO findByid(@PathVariable Long id) throws NoIdException {
-    return mapToDTO(curortService.findById(id));
+  ResponseEntity<CurortDTO> findByid(@PathVariable Long id) throws NoIdException {
+    return ResponseEntity.ok(curortService.findById(id));
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<String> update(@RequestBody CurortDTO curortDTO, @PathVariable Long id) {
+  public ResponseEntity<CurortDTO> update(@RequestBody CurortDTO curortDTO, @PathVariable Long id) {
 
     curortService.updateDto(curortDTO, id);
 
-    return ResponseEntity.ok("Done " + curortDTO);
+    return ResponseEntity.ok( curortDTO);
   }
 
   @DeleteMapping("/{id}")
-  public String delete(@PathVariable Long id) throws NoIdException {
+  public HttpStatus delete(@PathVariable Long id) throws NoIdException {
 
     curortService.delete(id);
-    return "Delete object with id: " + id + " sucesfull";
+    return HttpStatus.OK;
   }
 
   @ExceptionHandler(NoIdException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
-  public String idNotFoundHandler(NoIdException ex) {
+  public Error idNotFoundHandler(NoIdException ex) {
 
-    return ex.getMessage();
+    return new Error(ex.getMessage());
   }
 }
