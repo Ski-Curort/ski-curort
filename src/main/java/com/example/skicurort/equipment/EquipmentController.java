@@ -14,7 +14,7 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
     @GetMapping
-    List<Equipment> getAllEqiupment(){
+    List<Equipment> getAllEquipment(){
        return equipmentService.getAll();
     }
 
