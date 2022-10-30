@@ -30,15 +30,18 @@ public class CurortService {
     curortRepo.deleteById(id);
   }
 
-  public void updateDto(CurortDTO curortDTO, Long id) throws NoIdException {
-    if (curortRepo.existsById(id)) {
-      curortRepo.findById(id).get().setCurortName(curortDTO.curortName());
-      curortRepo.findById(id).get().setCurortAdress(curortDTO.curortAdress());
-      curortRepo.findById(id).get().setCurortPhonenumber(curortDTO.curortPhonenumber());
-      curortRepo.findById(id).get().setCurrortEmail(curortDTO.currortEmail());
+  public Curort updateDto(CurortDTO curortDTO, Long id) throws NoIdException {
 
-    } else {
-      throw new NoIdException(id);
-    }
+    return curortRepo
+        .findById(id)
+        .map(
+            curort -> {
+              curort.setCurortName(curortDTO.curortName());
+              curort.setCurortAdress(curortDTO.curortAdress());
+              curort.setCurortPhonenumber(curortDTO.curortPhonenumber());
+              curort.setCurrortEmail(curortDTO.currortEmail());
+              return curortRepo.save(curort);
+            })
+        .orElseThrow(() -> new NoIdException(id));
   }
 }

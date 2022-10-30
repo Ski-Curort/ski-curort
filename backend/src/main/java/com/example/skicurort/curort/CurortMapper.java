@@ -5,7 +5,7 @@ import java.util.List;
 public class CurortMapper {
   private CurortMapper() {}
 
-  static CurortDTO mapCurortToCurortDTO(Curort curort) {
+  static CurortDTO mapToDTO(Curort curort) {
     return new CurortDTO(
         curort.getCurortName(),
         curort.getCurortAdress(),
@@ -13,7 +13,7 @@ public class CurortMapper {
         curort.getCurortPhonenumber());
   }
 
-  static Curort mapCurortDTOToCurort(CurortDTO curortDto) {
+  static Curort mapToEntity(CurortDTO curortDto) {
     Curort curort = new Curort();
     curort.setCurortName(curortDto.curortName());
     curort.setCurortAdress(curortDto.curortAdress());
@@ -22,7 +22,7 @@ public class CurortMapper {
     return curort;
   }
 
-  static List<CurortDTO> mapCurortsToCurortDTOs(List<Curort> curorts) {
-    return curorts.stream().map(CurortMapper::mapCurortToCurortDTO).toList();
+  static List<CurortDTO> mapToDTOs(List<Curort> curorts) {
+    return curorts.stream().map(CurortMapper::mapToDTO).toList();
   }
 }

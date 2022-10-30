@@ -1,8 +1,9 @@
 package com.example.skicurort.curort;
 
-import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -26,11 +27,11 @@ public class Curort {
   @Column(name = "curort_phone")
   private Long curortPhonenumber;
 
-  // TODO adding relation to person
-  // @OneToMany
-  // private <List> Person;
-  // TODO adding relation to person
-  // @OneToMany
-  // private <List> Shop;
+
+  /*@OneToMany
+   private <List>Person;
+
+  @OneToMany
+  private <List>Shop;*/
 
 }

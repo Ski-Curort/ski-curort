@@ -1,13 +1,14 @@
 package com.example.skicurort.curort;
 
-import static com.example.skicurort.curort.CurortMapper.*;
-
 import com.example.skicurort.exception.NoIdException;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static com.example.skicurort.curort.CurortMapper.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,19 +19,19 @@ public class CurortControler {
 
   @GetMapping("/")
   List<CurortDTO> getAll() {
-    return mapCurortsToCurortDTOs(curortService.getAll());
+    return mapToDTOs(curortService.getAll());
   }
 
   @PostMapping("/")
   public ResponseEntity<CurortDTO> save(@RequestBody CurortDTO curortDto) {
 
-    curortService.save(mapCurortDTOToCurort(curortDto));
+    curortService.save(mapToEntity(curortDto));
     return ResponseEntity.ok(curortDto);
   }
 
   @GetMapping("/{id}")
   CurortDTO findByid(@PathVariable Long id) throws NoIdException {
-    return mapCurortToCurortDTO(curortService.findById(id));
+    return mapToDTO(curortService.findById(id));
   }
 
   @PatchMapping("/{id}")
