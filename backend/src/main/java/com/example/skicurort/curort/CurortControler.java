@@ -1,14 +1,13 @@
 package com.example.skicurort.curort;
 
+import static com.example.skicurort.curort.CurortMapper.*;
+
 import com.example.skicurort.exception.NoIdException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-import static com.example.skicurort.curort.CurortMapper.*;
 
 @RestController
 @RequiredArgsConstructor

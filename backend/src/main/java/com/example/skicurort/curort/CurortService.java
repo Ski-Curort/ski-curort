@@ -1,10 +1,9 @@
 package com.example.skicurort.curort;
 
 import com.example.skicurort.exception.NoIdException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
-
 
 @Service
 @RequiredArgsConstructor
