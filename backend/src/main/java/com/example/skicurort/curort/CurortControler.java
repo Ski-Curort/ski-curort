@@ -2,12 +2,20 @@ package com.example.skicurort.curort;
 
 import com.example.skicurort.exception.Error;
 import com.example.skicurort.exception.NoIdException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,11 +42,9 @@ public class CurortControler {
   }
 
   @PatchMapping("/{id}")
-  public ResponseEntity<CurortDTO> update(@RequestBody CurortDTO curortDTO, @PathVariable Long id) {
-
-    curortService.updateDto(curortDTO, id);
-
-    return ResponseEntity.ok(curortDTO);
+  public ResponseEntity<CurortDTO> updateDto(
+      @RequestBody CurortDTO curortDTO, @PathVariable Long id) {
+    return ResponseEntity.ok(curortService.updateDto(curortDTO, id));
   }
 
   @DeleteMapping("/{id}")

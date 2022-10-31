@@ -3,7 +3,7 @@ package com.example.skicurort.curort;
 import java.util.List;
 
 public class CurortMapper {
-  private CurortMapper() {}
+  public CurortMapper() {}
 
   static CurortDTO mapToDTO(Curort curort) {
     return new CurortDTO(
