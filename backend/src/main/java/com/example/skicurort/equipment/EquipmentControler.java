@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,13 +33,13 @@ public class EquipmentControler {
   }
 
   @PostMapping("/newEquipment")
-  ResponseEntity<EquipmentDTO> addNewEquipment(EquipmentDTO equipmentDTO) {
+  ResponseEntity<EquipmentDTO> addNewEquipment(@RequestBody EquipmentDTO equipmentDTO) {
     equipmentService.addEquipment(equipmentDTO);
     return ResponseEntity.ok(equipmentDTO);
   }
 
   @PutMapping("/update/{id}")
-  ResponseEntity<EquipmentDTO> updateEquipment(Long id, EquipmentDTO equipmentDTO) {
+  ResponseEntity<EquipmentDTO> updateEquipment(Long id,@RequestBody EquipmentDTO equipmentDTO) {
     return ResponseEntity.ok(equipmentService.editEquipment(id, equipmentDTO));
   }
 
