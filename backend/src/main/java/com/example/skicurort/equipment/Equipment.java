@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @Entity
 @Setter
 @Getter
@@ -22,7 +24,7 @@ public class Equipment {
   private String type;
   private String mark;
   private boolean available;
-  private float cost;
+  private BigDecimal cost;
   // private Set<LocalDateTime> reservationDate;
 
   // @ManyToOne

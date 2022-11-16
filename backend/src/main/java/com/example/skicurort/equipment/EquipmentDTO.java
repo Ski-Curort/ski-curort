@@ -2,6 +2,7 @@ package com.example.skicurort.equipment;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 public record EquipmentDTO(
     Long id,
@@ -12,4 +13,4 @@ public record EquipmentDTO(
         @NotNull(message = "mark of equipment shouldn't be empty")
         String mark,
     boolean available,
-    @NotNull(message = "cost of equipment shouldn't be empty") Float cost) {}
+    @NotNull(message = "cost of equipment shouldn't be empty") BigDecimal cost) {}

@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.Matchers.equalTo;
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(EquipmentControler.class)
@@ -27,8 +29,8 @@ class EquipmentControlerTest {
     void when_add_New_Equipment_than_should_be_saved() throws Exception {
 
         //GIVEN
-        EquipmentDTO equipmentDTO = new EquipmentDTO(1L,"snowboard","xxx",true,3.5f);
-        EquipmentDTO addedEquipment = new EquipmentDTO(2L,"ski","yyy",true,4.5f);
+        EquipmentDTO equipmentDTO = new EquipmentDTO(1L,"snowboard","xxx",true,new BigDecimal(3.5));
+        EquipmentDTO addedEquipment = new EquipmentDTO(2L,"ski","yyy",true,new BigDecimal(4.5));
         Mockito.when(equipmentService.addEquipment(equipmentDTO)).thenReturn(addedEquipment);
         //WHEN
         //THAN
@@ -56,8 +58,8 @@ class EquipmentControlerTest {
     void when_updateEquipment() throws Exception {
         //GIVEN
         Long id =1L;
-        EquipmentDTO equipmentDTO = new EquipmentDTO(id,"snowboard","xxx",true,3.5f);
-        EquipmentDTO updatedEquipment = new EquipmentDTO(2L,"ski","yyy",true,4.5f);
+        EquipmentDTO equipmentDTO = new EquipmentDTO(id,"snowboard","xxx",true,new BigDecimal(3.5));
+        EquipmentDTO updatedEquipment = new EquipmentDTO(2L,"ski","yyy",true,new BigDecimal(4.5));
         Mockito.when(equipmentService.editEquipment(id,equipmentDTO)).thenReturn(updatedEquipment);
         //WHEN
         //THAN
