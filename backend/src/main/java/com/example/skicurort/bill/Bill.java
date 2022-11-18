@@ -32,9 +32,9 @@ public class Bill {
   @Column(name = "creation_date")
   private SimpleDateFormat creationDate;
 
-  // @ManyToOne
-  // @Column(name = "user")
-  // private User user;
+ @ManyToOne
+
+  private User user;
 
   //@ManyToOne
 
