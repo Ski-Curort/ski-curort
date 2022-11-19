@@ -1,22 +1,21 @@
 package com.example.skicurort.bill;
 
-import com.example.skicurort.item.Item;
 import com.example.skicurort.curort.Curort;
-import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import com.example.skicurort.item.Item;
+import com.example.skicurort.user.User;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import lombok.Data;
 
 @Entity
 @Data
@@ -32,14 +31,12 @@ public class Bill {
   @Column(name = "creation_date")
   private SimpleDateFormat creationDate;
 
- @ManyToOne
+  @ManyToOne private User user;
 
-  private User user;
+  @ManyToOne
+  @JoinColumn(name = "curort_id")
+  private Curort curort;
 
-  //@ManyToOne
-
-  //private Curort curort;
-
-  @OneToMany (mappedBy = "bill")
+  @OneToMany(mappedBy = "bill")
   List<Item> itemList;
 }

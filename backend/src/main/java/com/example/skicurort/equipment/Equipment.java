@@ -1,5 +1,6 @@
 package com.example.skicurort.equipment;
 
+import java.math.BigDecimal;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class Equipment {
   private String type;
   private String mark;
   private boolean available;
-  private float cost;
+  private BigDecimal cost;
   // @ManyToOne
   // private Shop shop;
 }

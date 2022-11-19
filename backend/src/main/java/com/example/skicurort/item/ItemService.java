@@ -1,12 +1,15 @@
 package com.example.skicurort.item;
 
-import com.example.skicurort.bill.Bill;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
+import static com.example.skicurort.item.ItemMapper.mapEquipmentToDto;
 import static com.example.skicurort.item.ItemMapper.mapToDTO;
 import static com.example.skicurort.item.ItemMapper.mapToEntity;
+
+import com.example.skicurort.bill.BillRepo;
+import com.example.skicurort.equipment.Equipment;
+import java.util.List;
+
+import com.example.skicurort.equipment.EquipmentDto;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ItemService {
@@ -14,14 +17,15 @@ public class ItemService {
   private ItemRepo itemRepo;
   private BillRepo billRepo;
 
-  public ItemDto save(ItemDto itemDto, Long id) {
-bill
-    return mapToDTO(itemRepo.save(mapToEntity(itemDto)));
+  public ItemDto addItem(EquipmentDto equipmentDto, Long billId, Long quantity) {
+    ItemDto itemDto = mapEquipmentToDto(equipmentDto);
+    itemDto.setIdBill(billId);
+    itemDto.setQuantity(quantity);
+    Item item = mapToEntity(itemDto);
+    itemRepo.save(item);
+    return mapToDTO(item);
   }
-public Item save2 (Item item, Long id){
-    item.bill.setId(id);
-    return itemRepo.save(item)
-}
+
   public List<ItemDto> findByBillId(Long id) {
     return findByBillId(id);
   }

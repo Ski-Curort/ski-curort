@@ -1,9 +1,7 @@
 package com.example.skicurort.item;
 
 import com.example.skicurort.bill.Bill;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.math.BigDecimal;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -31,6 +30,9 @@ public class Item {
 
   @Column(name = "unite_price")
   private BigDecimal unitePrice;
-  @ManyToOne
-  Bill bill;
+
+  @Column(name = "total_price")
+  private BigDecimal totalPrice;
+
+  @ManyToOne Bill bill;
 }
