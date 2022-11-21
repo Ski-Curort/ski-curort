@@ -8,7 +8,9 @@ import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BillService {
   static BillRepo billRepo;
   static ItemRepo itemRepo;
