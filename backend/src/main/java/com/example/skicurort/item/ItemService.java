@@ -5,7 +5,7 @@ import static com.example.skicurort.item.ItemMapper.mapToDTO;
 import static com.example.skicurort.item.ItemMapper.mapToEntity;
 
 import com.example.skicurort.bill.BillRepo;
-import com.example.skicurort.equipment.EquipmentDto;
+import com.example.skicurort.equipment.EquipmentDTO;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class ItemService {
   private ItemRepo itemRepo;
   private BillRepo billRepo;
 
-  public ItemDto addItem(EquipmentDto equipmentDto, Long billId, Long quantity) {
+  public ItemDto addItem(EquipmentDTO equipmentDto, Long billId, Long quantity) {
     ItemDto itemDto = mapEquipmentToDto(equipmentDto);
     itemDto.setIdBill(billId);
     itemDto.setQuantity(quantity);

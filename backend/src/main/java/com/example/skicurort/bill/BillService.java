@@ -4,6 +4,7 @@ import static com.example.skicurort.bill.BillMapper.mapToDTO;
 
 import com.example.skicurort.item.Item;
 import com.example.skicurort.item.ItemRepo;
+import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -16,7 +17,8 @@ public class BillService {
   public BillDto save(Long userId) {
     Bill bill = new Bill();
     bill.setCreationDate(new SimpleDateFormat());
-    bill.setUser(userRepository.findById(userId));
+    // bill.setUser(userRepository.findById(userId));
+    // TODO zakomentowane ponieważ nie ma metody findbyId
     billRepo.save(bill);
     return mapToDTO(bill);
   }

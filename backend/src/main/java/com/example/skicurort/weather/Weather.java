@@ -1,101 +1,108 @@
 package com.example.skicurort.weather;
 
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Entity
 public class Weather {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String cityName;
-    private float temp;
-    private float pressure;
-    private int humidity;
-    private float windSpeed;
-    private int windDeg;
-    private LocalDateTime dateTime;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private int id;
 
-    public Weather() {
-    }
+  private String cityName;
+  private float temp;
+  private float pressure;
+  private int humidity;
+  private float windSpeed;
+  private int windDeg;
+  private LocalDateTime dateTime;
 
-    public Weather(int id, String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dateTime) {
-        this.id = id;
-        this.cityName = cityName;
-        this.temp = temp;
-        this.pressure = pressure;
-        this.humidity = humidity;
-        this.windSpeed = windSpeed;
-        this.windDeg = windDeg;
-        this.dateTime = dateTime;
-    }
+  public Weather() {}
 
-    public int getId() {
-        return id;
-    }
+  public Weather(
+      int id,
+      String cityName,
+      float temp,
+      float pressure,
+      int humidity,
+      float windSpeed,
+      int windDeg,
+      LocalDateTime dateTime) {
+    this.id = id;
+    this.cityName = cityName;
+    this.temp = temp;
+    this.pressure = pressure;
+    this.humidity = humidity;
+    this.windSpeed = windSpeed;
+    this.windDeg = windDeg;
+    this.dateTime = dateTime;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getCityName() {
-        return cityName;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
+  public String getCityName() {
+    return cityName;
+  }
 
-    public float getTemp() {
-        return temp;
-    }
+  public void setCityName(String cityName) {
+    this.cityName = cityName;
+  }
 
-    public void setTemp(float temp) {
-        this.temp = temp;
-    }
+  public float getTemp() {
+    return temp;
+  }
 
-    public float getPressure() {
-        return pressure;
-    }
+  public void setTemp(float temp) {
+    this.temp = temp;
+  }
 
-    public void setPressure(float pressure) {
-        this.pressure = pressure;
-    }
+  public float getPressure() {
+    return pressure;
+  }
 
-    public int getHumidity() {
-        return humidity;
-    }
+  public void setPressure(float pressure) {
+    this.pressure = pressure;
+  }
 
-    public void setHumidity(int humidity) {
-        this.humidity = humidity;
-    }
+  public int getHumidity() {
+    return humidity;
+  }
 
-    public float getWindSpeed() {
-        return windSpeed;
-    }
+  public void setHumidity(int humidity) {
+    this.humidity = humidity;
+  }
 
-    public void setWindSpeed(float windSpeed) {
-        this.windSpeed = windSpeed;
-    }
+  public float getWindSpeed() {
+    return windSpeed;
+  }
 
-    public int getWindDeg() {
-        return windDeg;
-    }
+  public void setWindSpeed(float windSpeed) {
+    this.windSpeed = windSpeed;
+  }
 
-    public void setWindDeg(int windDeg) {
-        this.windDeg = windDeg;
-    }
+  public int getWindDeg() {
+    return windDeg;
+  }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+  public void setWindDeg(int windDeg) {
+    this.windDeg = windDeg;
+  }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
+  public LocalDateTime getDateTime() {
+    return dateTime;
+  }
+
+  public void setDateTime(LocalDateTime dateTime) {
+    this.dateTime = dateTime;
+  }
 }
-

@@ -39,7 +39,7 @@ public class EquipmentControler {
   }
 
   @PutMapping("/update/{id}")
-  ResponseEntity<EquipmentDTO> updateEquipment(Long id,@RequestBody EquipmentDTO equipmentDTO) {
+  ResponseEntity<EquipmentDTO> updateEquipment(Long id, @RequestBody EquipmentDTO equipmentDTO) {
     return ResponseEntity.ok(equipmentService.editEquipment(id, equipmentDTO));
   }
 

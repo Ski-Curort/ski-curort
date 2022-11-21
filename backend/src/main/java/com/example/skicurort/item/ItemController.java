@@ -1,6 +1,6 @@
 package com.example.skicurort.item;
 
-import com.example.skicurort.equipment.EquipmentDto;
+import com.example.skicurort.equipment.EquipmentDTO;
 import com.example.skicurort.exception.NoIdException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -29,10 +29,10 @@ public class ItemController {
 
   @PostMapping("/{billId}/{quantity}")
   public ResponseEntity<ItemDto> save(
-      @RequestBody EquipmentDto equipmentDto, @PathVariable Long billId, Long quantity)
+      @RequestBody EquipmentDTO equipmentDTO, @PathVariable Long billId, Long quantity)
       throws NoIdException {
 
-    return ResponseEntity.ok(itemService.addItem(equipmentDto, billId, quantity));
+    return ResponseEntity.ok(itemService.addItem(equipmentDTO, billId, quantity));
   }
 
   @ExceptionHandler(NoIdException.class)

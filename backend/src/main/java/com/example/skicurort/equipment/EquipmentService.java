@@ -1,15 +1,14 @@
 package com.example.skicurort.equipment;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import static com.example.skicurort.equipment.EquipmentMapper.mapToDTO;
 import static com.example.skicurort.equipment.EquipmentMapper.mapToDTOs;
 import static com.example.skicurort.equipment.EquipmentMapper.mapToEntity;
+
+import java.util.List;
+import java.util.NoSuchElementException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -37,12 +36,11 @@ public class EquipmentService {
             .orElseThrow(() -> new NoSuchElementException("item with id: " + id + " not exist")));
   }
 
-  EquipmentDTO addEquipment( EquipmentDTO equipmentDTO) {
+  EquipmentDTO addEquipment(EquipmentDTO equipmentDTO) {
     return mapToDTO(equipmentRepository.save(mapToEntity(equipmentDTO)));
   }
 
-  EquipmentDTO editEquipment( Long id, EquipmentDTO equipmentDTO)
-      throws NoSuchElementException {
+  EquipmentDTO editEquipment(Long id, EquipmentDTO equipmentDTO) throws NoSuchElementException {
     Equipment equipment =
         equipmentRepository
             .findById(id)

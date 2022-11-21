@@ -1,6 +1,6 @@
 package com.example.skicurort.item;
 
-import com.example.skicurort.equipment.EquipmentDto;
+import com.example.skicurort.equipment.EquipmentDTO;
 import java.math.BigDecimal;
 
 public class ItemMapper {
@@ -14,7 +14,7 @@ public class ItemMapper {
         item.getTotalPrice());
   }
 
-  static ItemDto mapEquipmentToDto(EquipmentDto equipmentDto) {
+  static ItemDto mapEquipmentToDto(EquipmentDTO equipmentDto) {
     ItemDto itemDto = new ItemDto();
     itemDto.setItemName(equipmentDto.mark());
     return itemDto;
