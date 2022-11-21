@@ -1,12 +1,12 @@
 package com.example.skicurort.bill;
 
+import static com.example.skicurort.bill.BillMapper.mapToDTO;
+
 import com.example.skicurort.item.Item;
 import com.example.skicurort.item.ItemRepo;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import static com.example.skicurort.bill.BillMapper.mapToDTO;
 
 public class BillService {
   static BillRepo billRepo;

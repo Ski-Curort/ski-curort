@@ -1,6 +1,5 @@
 package com.example.skicurort.bill;
 
-import com.example.skicurort.curort.Curort;
 import com.example.skicurort.item.Item;
 import com.example.skicurort.user.User;
 import java.math.BigDecimal;
@@ -8,11 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Data;
@@ -33,9 +30,7 @@ public class Bill {
 
   @ManyToOne private User user;
 
-  @ManyToOne
-  @JoinColumn(name = "curort_id")
-  private Curort curort;
+  @ManyToOne private Curort curort;
 
   @OneToMany(mappedBy = "bill")
   List<Item> itemList;

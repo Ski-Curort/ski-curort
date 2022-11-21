@@ -1,10 +1,7 @@
 package com.example.skicurort.item;
 
-import com.example.skicurort.equipment.Equipment;
 import com.example.skicurort.equipment.EquipmentDto;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 public class ItemMapper {
 

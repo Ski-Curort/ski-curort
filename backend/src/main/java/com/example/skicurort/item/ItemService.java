@@ -5,10 +5,8 @@ import static com.example.skicurort.item.ItemMapper.mapToDTO;
 import static com.example.skicurort.item.ItemMapper.mapToEntity;
 
 import com.example.skicurort.bill.BillRepo;
-import com.example.skicurort.equipment.Equipment;
-import java.util.List;
-
 import com.example.skicurort.equipment.EquipmentDto;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
