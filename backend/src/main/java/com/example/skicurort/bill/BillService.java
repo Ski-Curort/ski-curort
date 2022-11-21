@@ -8,13 +8,15 @@ import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BillService {
-  static BillRepo billRepo;
-  static ItemRepo itemRepo;
-  static UserRepository userRepository;
+  private final BillRepo billRepo;
+  private final ItemRepo itemRepo;
+  private final UserRepository userRepository;
 
   public BillDto save(Long userId) {
     Bill bill = new Bill();

@@ -2,6 +2,7 @@ package com.example.skicurort.item;
 
 import com.example.skicurort.equipment.EquipmentDTO;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class ItemMapper {
 
@@ -28,5 +29,9 @@ public class ItemMapper {
     item.bill.setId(item.getId());
     item.setTotalPrice(itemDto.getUnitePrice().multiply(BigDecimal.valueOf(itemDto.getQuantity())));
     return item;
+  }
+
+  static List<ItemDto> mapToDTOs(List<Item> items) {
+    return items.stream().map(ItemMapper::mapToDTO).toList();
   }
 }

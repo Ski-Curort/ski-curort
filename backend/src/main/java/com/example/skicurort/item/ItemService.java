@@ -2,18 +2,19 @@ package com.example.skicurort.item;
 
 import static com.example.skicurort.item.ItemMapper.mapEquipmentToDto;
 import static com.example.skicurort.item.ItemMapper.mapToDTO;
+import static com.example.skicurort.item.ItemMapper.mapToDTOs;
 import static com.example.skicurort.item.ItemMapper.mapToEntity;
 
-import com.example.skicurort.bill.BillRepo;
 import com.example.skicurort.equipment.EquipmentDTO;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ItemService {
 
-  private ItemRepo itemRepo;
-  private BillRepo billRepo;
+  private final ItemRepo itemRepo;
 
   public ItemDto addItem(EquipmentDTO equipmentDto, Long billId, Long quantity) {
     ItemDto itemDto = mapEquipmentToDto(equipmentDto);
@@ -25,6 +26,6 @@ public class ItemService {
   }
 
   public List<ItemDto> findByBillId(Long id) {
-    return findByBillId(id);
+    return mapToDTOs(itemRepo.findItemsByBillId(id));
   }
 }
