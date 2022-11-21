@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 public record EquipmentDTO(
     Long id,
     @Max(value = 100, message = "type should not be greater than 100")
-        @NotNull(message = "type of equipment shouldn't be empty")
+        @NotNull(message = "type of equipment shouldn't be emptyaaaaaa")
         String type,
     @Max(value = 100, message = "mark should not be greater than 100")
         @NotNull(message = "mark of equipment shouldn't be empty")
