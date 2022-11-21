@@ -18,7 +18,7 @@ public class BillService {
     Bill bill = new Bill();
     bill.setCreationDate(new SimpleDateFormat());
     // bill.setUser(userRepository.findById(userId));
-    // TODO zakomentowane ponieważ nie ma metody findbyId
+    // TODO zakomentowane ponieważ nie ma metody findbyId w user
     billRepo.save(bill);
     return mapToDTO(bill);
   }
