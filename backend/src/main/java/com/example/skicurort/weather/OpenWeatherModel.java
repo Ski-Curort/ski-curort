@@ -46,9 +46,11 @@ public class OpenWeatherModel {
         this.dateTime = dateTime;
     }
 
+
+
     @Override
     public String toString() {
-        return "OpenWeather{" +
+        return "OpenWeatherModel{" +
                 "name='" + name + '\'' +
                 ", weatherDetails=" + weatherDetails +
                 ", windDetails=" + windDetails +
@@ -140,5 +142,7 @@ class WindDetails {
                 ", deg=" + deg +
                 '}';
     }
-}
+
+    }
+
 

@@ -1,17 +1,20 @@
 package com.example.skicurort.weather;
 
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
-
+@ToString
 @Entity
 public class Weather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String cityName;
     private float temp;
     private float pressure;
@@ -23,8 +26,9 @@ public class Weather {
     public Weather() {
     }
 
-    public Weather(int id, String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dateTime) {
+    public Weather(int id,  String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dateTime) {
         this.id = id;
+
         this.cityName = cityName;
         this.temp = temp;
         this.pressure = pressure;
@@ -97,5 +101,6 @@ public class Weather {
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+
 }
 
