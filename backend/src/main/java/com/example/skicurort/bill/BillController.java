@@ -21,18 +21,18 @@ public class BillController {
 
   private final BillService billService;
 
-  @GetMapping("/price/{billid}")
+  @GetMapping("/{billid}/price")
   ResponseEntity<BigDecimal> totalPriceById(@PathVariable Long billid) throws NoIdException {
     return ResponseEntity.ok(billService.totalPriceById(billid));
   }
 
-  @PostMapping("/{userId}")
+  @PostMapping("/user/{userId}")
   public ResponseEntity<BillDto> save(@PathVariable Long userId) throws NoIdException {
 
     return ResponseEntity.ok(billService.save(userId));
   }
 
-  @GetMapping("/{userName)")
+  @GetMapping("/user/{userName)")
   ResponseEntity<BillDto> findByUserName(@PathVariable String userName) throws NoIdException {
     return ResponseEntity.ok(billService.findByUserName(userName));
   }

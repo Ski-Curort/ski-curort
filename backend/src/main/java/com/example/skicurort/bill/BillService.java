@@ -7,6 +7,7 @@ import com.example.skicurort.item.ItemRepo;
 import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class BillService {
 
   public BillDto save(Long userId) {
     Bill bill = new Bill();
-    bill.setCreationDate(new SimpleDateFormat());
+    bill.setCreationDate(new Date());
     // bill.setUser(userRepository.findById(userId));
     // TODO zakomentowane ponieważ nie ma metody findbyId w user
     billRepo.save(bill);
