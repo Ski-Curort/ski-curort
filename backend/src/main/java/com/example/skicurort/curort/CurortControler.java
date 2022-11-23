@@ -32,8 +32,7 @@ public class CurortControler {
   @PostMapping("/")
   public ResponseEntity<CurortDTO> save(@RequestBody CurortDTO curortDto) {
 
-    curortService.save(curortDto);
-    return ResponseEntity.ok(curortDto);
+    return ResponseEntity.ok(curortService.save(curortDto));
   }
 
   @GetMapping("/{id}")
