@@ -1,6 +1,10 @@
 package com.example.skicurort.equipment;
 
-import javax.persistence.*;
+import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +23,9 @@ public class Equipment {
   private String type;
   private String mark;
   private boolean available;
-  private float cost;
+  private BigDecimal cost;
+  // private Set<LocalDateTime> reservationDate;
+
   // @ManyToOne
   // private Shop shop;
 }
