@@ -1,15 +1,17 @@
 package com.example.skicurort.bill;
 
+import java.util.Optional;
+
 public class BillMapper {
 
-  static BillDto mapToDTO(Bill bill) {
+  static BillDto mapToDTO(Optional<Bill> bill) {
     return new BillDto(
-        bill.getId(),
-        bill.getTotalCost(),
-        bill.getCreationDate(),
-        bill.getUser(),
-        bill.getCurort(),
-        bill.itemList);
+        bill.get().getId(),
+        bill.get().getTotalCost(),
+        bill.get().getCreationDate(),
+        bill.get().getUser(),
+        bill.get().getCurort(),
+        bill.get().itemList);
   }
 
   static Bill mapToEntity(BillDto billDto) {

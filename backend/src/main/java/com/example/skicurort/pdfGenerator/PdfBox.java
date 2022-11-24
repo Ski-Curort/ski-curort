@@ -28,8 +28,8 @@ public class PdfBox {
     content.endText();
   }
 
-  public static void createPdf(String userName) throws IOException {
-    BillDto bill = billService.findByUserName(userName);
+  public static void createPdf(Long id) throws IOException {
+    BillDto bill = billService.findByBillId(id);
     Calendar c = Calendar.getInstance();
     String pdfFileName =
         "filesPdf/invoice_"

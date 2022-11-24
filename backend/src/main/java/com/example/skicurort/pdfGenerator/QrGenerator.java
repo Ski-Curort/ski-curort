@@ -23,7 +23,9 @@ public class QrGenerator {
     String content = String.valueOf(id);
     Calendar calendar = Calendar.getInstance();
     String path =
-        "Quote_"
+        "filesPdf/Quote_"
+            + calendar.get(Calendar.DATE)
+            + ""
             + calendar.get(Calendar.HOUR_OF_DAY)
             + "_"
             + calendar.get(Calendar.MINUTE)
@@ -31,7 +33,7 @@ public class QrGenerator {
             + calendar.get(Calendar.SECOND)
             + ".png";
     String charset = "UTF-8";
-    generateQRcode(content, path, charset, 200, 200);
+    generateQRcode(content, path, charset, 250, 250);
     return path;
   }
 }

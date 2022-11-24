@@ -33,8 +33,8 @@ public class BillController {
   }
 
   @GetMapping("/{userName)")
-  ResponseEntity<BillDto> findByUserName(@PathVariable String userName) throws NoIdException {
-    return ResponseEntity.ok(billService.findByUserName(userName));
+  ResponseEntity<BillDto> findByBillId(@PathVariable Long id) throws NoIdException {
+    return ResponseEntity.ok(billService.findByBillId(id));
   }
 
   @ExceptionHandler(NoIdException.class)
