@@ -4,13 +4,13 @@ import com.example.skicurort.curort.Curort;
 import com.example.skicurort.item.Item;
 import com.example.skicurort.user.User;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public record BillDto(
     Long id,
     BigDecimal totalCost,
-    SimpleDateFormat creationDate,
+    Date creationDate,
     User user,
     Curort curort,
     List<Item> itemList) {}

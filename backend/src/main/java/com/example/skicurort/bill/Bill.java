@@ -4,7 +4,7 @@ import com.example.skicurort.curort.Curort;
 import com.example.skicurort.item.Item;
 import com.example.skicurort.user.User;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class Bill {
   private BigDecimal totalCost;
 
   @Column(name = "creation_date")
-  private SimpleDateFormat creationDate;
+  private Date creationDate;
 
   @ManyToOne private User user;
 

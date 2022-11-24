@@ -4,7 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BillRepo extends JpaRepository<Bill, Long> {
 
-  Bill findByUserName(String username);
-
   Bill findBillById(Long id);
 }
