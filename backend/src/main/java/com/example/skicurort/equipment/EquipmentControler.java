@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class EquipmentControler {
   }
 
   @GetMapping("/type/{type}")
-  ResponseEntity<List<EquipmentDTO>> getEquipmentByType(String type) {
+  ResponseEntity<List<EquipmentDTO>> getEquipmentByType(@PathVariable String type) {
     return ResponseEntity.ok(equipmentService.getAllEquipmentByType(type));
   }
 
@@ -39,12 +40,12 @@ public class EquipmentControler {
   }
 
   @PutMapping("/update/{id}")
-  ResponseEntity<EquipmentDTO> updateEquipment(Long id,@RequestBody EquipmentDTO equipmentDTO) {
+  ResponseEntity<EquipmentDTO> updateEquipment(@PathVariable Long id, @RequestBody EquipmentDTO equipmentDTO) {
     return ResponseEntity.ok(equipmentService.editEquipment(id, equipmentDTO));
   }
 
   @DeleteMapping("/delete/{id}")
-  HttpStatus removeEquipment(Long id) {
+  HttpStatus removeEquipment(@PathVariable Long id) {
     equipmentService.deleteEquipment(id);
     return HttpStatus.OK;
   }

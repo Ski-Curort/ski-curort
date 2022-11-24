@@ -25,8 +25,5 @@ public class Equipment {
   private String mark;
   private boolean available;
   private BigDecimal cost;
-  // private Set<LocalDateTime> reservationDate;
 
-  // @ManyToOne
-  // private Shop shop;
 }

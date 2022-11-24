@@ -53,41 +53,4 @@ class EquipmentControlerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.available",equalTo(true)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cost",equalTo(3.5)));
     }
-
-    @Test
-    void when_updateEquipment() throws Exception {
-        //GIVEN
-        Long id =1L;
-        EquipmentDTO equipmentDTO = new EquipmentDTO(id,"snowboard","xxx",true,new BigDecimal(3.5));
-        EquipmentDTO updatedEquipment = new EquipmentDTO(2L,"ski","yyy",true,new BigDecimal(4.5));
-        Mockito.when(equipmentService.editEquipment(id,equipmentDTO)).thenReturn(updatedEquipment);
-        //WHEN
-        //THAN
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/equipment/update/"+id)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(
-                                """
-                                       {   
-                                        "id" : 1,
-                                        "type" : "snowboard",
-                                        "mark" : "xxx",
-                                        "available" : true,
-                                        "cost" : 3.5
-                                       } 
-                                       """
-
-                        )).andExpect(MockMvcResultMatchers.jsonPath("$.id",equalTo(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.type",equalTo("snowboard")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.mark",equalTo("xxx")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.available",equalTo(true)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.cost",equalTo(3.5)));
-
-    }
-
-    @Test
-    void removeEquipment() {
-        //GIVEN
-        //WHEN
-        //THAN
-    }
 }

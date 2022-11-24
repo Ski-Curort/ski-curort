@@ -26,9 +26,8 @@ public class Weather {
     public Weather() {
     }
 
-    public Weather(int id,  String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dateTime) {
+    public Weather(int id, String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dateTime) {
         this.id = id;
-
         this.cityName = cityName;
         this.temp = temp;
         this.pressure = pressure;
@@ -101,6 +100,7 @@ public class Weather {
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+
 
 }
 

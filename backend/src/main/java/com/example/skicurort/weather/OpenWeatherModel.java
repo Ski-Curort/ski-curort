@@ -47,7 +47,6 @@ public class OpenWeatherModel {
     }
 
 
-
     @Override
     public String toString() {
         return "OpenWeatherModel{" +
@@ -142,7 +141,7 @@ class WindDetails {
                 ", deg=" + deg +
                 '}';
     }
+}
 
-    }
 
 
