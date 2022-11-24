@@ -32,7 +32,7 @@ public class BillController {
     return ResponseEntity.ok(billService.save(userId));
   }
 
-  @GetMapping("/{userName)")
+  @GetMapping("/user/{userName)")
   ResponseEntity<BillDto> findByBillId(@PathVariable Long id) throws NoIdException {
     return ResponseEntity.ok(billService.findByBillId(id));
   }
