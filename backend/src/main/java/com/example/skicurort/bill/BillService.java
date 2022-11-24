@@ -8,6 +8,7 @@ import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class BillService {
     // bill.setUser(userRepository.findById(userId));
     // TODO zakomentowane ponieważ nie ma metody findbyId w user
     billRepo.save(bill);
-    return mapToDTO(bill);
+    return mapToDTO(Optional.of(bill));
   }
 
   public BigDecimal totalPriceById(Long billId) {
@@ -37,7 +38,7 @@ public class BillService {
     return totalPrice;
   }
 
-  public BillDto findByUserName(String userName) {
-    return mapToDTO(billRepo.findByUserName(userName));
+  public BillDto findByBillId(Long id) {
+    return mapToDTO(Optional.ofNullable(billRepo.findBillById(id)));
   }
 }
