@@ -28,11 +28,15 @@ public class EquipmentService {
   List<EquipmentDTO> getAllEquipmentByType(String type) {
     return mapToDTOs(equipmentRepository.findAllByType(type));
   }
-  List<EquipmentDTO> getEquipmentByTypeAndSize(String type,String size){
-    return mapToDTOs(equipmentRepository.findAllByTypeAndSize(type,size));
+
+
+  List<EquipmentDTO> getEquipmentByTypeAndSize(String type, String size) {
+    return mapToDTOs(equipmentRepository.findAllByTypeAndSize(type, size));
   }
-  List<EquipmentDTO> getEquipmentByTypeAndSizeAndAvailable(String type,String size,boolean available){
-    return mapToDTOs(equipmentRepository.findAllByTypeAndSizeAndAvailable(type,size,available));
+
+  List<EquipmentDTO> getEquipmentByTypeAndSizeAndAvailable(
+      String type, String size, boolean available) {
+    return mapToDTOs(equipmentRepository.findAllByTypeAndSizeAndAvailable(type, size, available));
   }
 
   EquipmentDTO getOneItem(Long id) {
@@ -64,4 +68,5 @@ public class EquipmentService {
     }
     equipmentRepository.deleteById(id);
   }
+
 }

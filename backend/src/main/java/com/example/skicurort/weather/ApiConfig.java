@@ -7,7 +7,7 @@ public class ApiConfig {
 
   public ApiConfig() {
     this.baseAPIUrl = "https://api.openweathermap.org/data/2.5/weather";
-    this.appId = "baa6ece140be0985d8bf8766fa381d1d";
+    this.appId = "e97aa6d17c38062e8989e4b4059cc4a6";
   }
 
   String getByCityNameQuery(String cityName) {

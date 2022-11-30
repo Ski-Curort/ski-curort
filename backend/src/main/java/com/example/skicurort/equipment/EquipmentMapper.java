@@ -7,6 +7,7 @@ public class EquipmentMapper {
 
   static EquipmentDTO mapToDTO(Equipment equipment) {
     return new EquipmentDTO(
+            equipment.getId(),
         equipment.getType(),
         equipment.getSize(),
         equipment.getMark(),
@@ -16,6 +17,7 @@ public class EquipmentMapper {
 
   static Equipment mapToEntity(EquipmentDTO equipmentDTO) {
     Equipment equipment = new Equipment();
+    equipment.setId(equipmentDTO.id());
     equipment.setType(equipmentDTO.type());
     equipment.setSize(equipmentDTO.size());
     equipment.setMark(equipmentDTO.mark());

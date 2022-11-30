@@ -21,6 +21,7 @@ public class Equipment {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   private String type;
   private String size;
   private String mark;

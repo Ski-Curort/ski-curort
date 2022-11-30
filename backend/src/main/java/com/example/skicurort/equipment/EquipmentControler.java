@@ -34,14 +34,24 @@ public class EquipmentControler {
   ResponseEntity<List<EquipmentDTO>> getEquipmentByType(@PathVariable String type) {
     return ResponseEntity.ok(equipmentService.getAllEquipmentByType(type));
   }
+  @GetMapping("/search/{id}")
+  ResponseEntity<EquipmentDTO> getEquipmentById(@PathVariable Long id) {
+    return ResponseEntity.ok(equipmentService.getOneItem(id));
+  }
+
   @GetMapping("/search?type={type}&size={size}")
-  ResponseEntity<List<EquipmentDTO>> getEquipmentByTypeAndSize(@PathVariable String type, @PathVariable String size){
-    return ResponseEntity.ok(equipmentService.getEquipmentByTypeAndSize(type,size));
+  ResponseEntity<List<EquipmentDTO>> getEquipmentByTypeAndSize(
+      @PathVariable String type, @PathVariable String size) {
+    return ResponseEntity.ok(equipmentService.getEquipmentByTypeAndSize(type, size));
   }
+
   @GetMapping("/search?type={type}&size={size}&available={available}")
-  ResponseEntity<List<EquipmentDTO>> getEquipmentByTypeAndSizeAndAvailable(@PathVariable String type, @PathVariable String size,@PathVariable boolean available) {
-    return ResponseEntity.ok(equipmentService.getEquipmentByTypeAndSizeAndAvailable(type, size, available));
+  ResponseEntity<List<EquipmentDTO>> getEquipmentByTypeAndSizeAndAvailable(
+      @PathVariable String type, @PathVariable String size, @PathVariable boolean available) {
+    return ResponseEntity.ok(
+        equipmentService.getEquipmentByTypeAndSizeAndAvailable(type, size, available));
   }
+
   @PostMapping("/newEquipment")
   ResponseEntity<EquipmentDTO> addNewEquipment(@RequestBody EquipmentDTO equipmentDTO) {
     equipmentService.addEquipment(equipmentDTO);

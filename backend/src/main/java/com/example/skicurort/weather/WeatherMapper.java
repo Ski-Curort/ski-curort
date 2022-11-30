@@ -15,7 +15,6 @@ public class WeatherMapper {
     weather.setPressure(openWeather.getWeatherDetails().getPressure());
     weather.setWindSpeed(openWeather.getWindDetails().getSpeed());
     weather.setWindDeg(openWeather.getWindDetails().getDeg());
-    weather.setDateTime(LocalDateTime.ofEpochSecond(openWeather.getDateTime(), 0, ZoneOffset.UTC));
     log.info(String.valueOf(weather));
     return weather;
   }
