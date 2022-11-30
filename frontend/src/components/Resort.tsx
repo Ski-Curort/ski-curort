@@ -1,18 +1,27 @@
 import {DataContext} from "../App";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
-import {Button} from "@chakra-ui/react";
+import {Box, Button} from "@chakra-ui/react";
+import {NavBar} from "./navBar";
 
 
-export const Resort=()=>{
+export const Resort=()=> {
 
     const context = useContext(DataContext);
     const navigate = useNavigate()
-    return(<div>
+    return (<Box>
+            <NavBar/>
+            <Box>
+                {context.resortData.id}
+                <Button className={"signButton"} onClick={() => navigate("/cart")}>CART</Button>
+
+            </Box>
+        </Box>
+
+    )
+}
 
 
-        {context.resortData.id}
-<Button className={"signButton"} onClick={()=>navigate("/cart")}>Koszyk</Button>
 
 
 
@@ -21,5 +30,3 @@ export const Resort=()=>{
 
 
 
-
-    </div>)}

@@ -2,13 +2,13 @@ import {NavBar} from "./navBar";
 import {
     Box,
     FormControl,
-    FormLabel,
+
     NumberDecrementStepper,
     NumberIncrementStepper,
     NumberInput, NumberInputField,
     NumberInputStepper
 } from "@chakra-ui/react";
-import Arrow from "../files/Vector (3).png"
+
 import {useNavigate} from "react-router-dom";
 import Bin from "../files/Vector (1).png";
 import {useContext, useEffect, useState} from "react";
@@ -63,7 +63,30 @@ export const Cart = () => {
 
 
     };
-  
+    function confirmBill(){
+
+        equipments.forEach((equipment)=> {
+            fetch(`http://localhost:8080/api/item/${bill.id}/${2}`,
+
+                {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(
+                        {
+                            "id":equipment.id,
+                            "type": equipment.quipmentType,
+                            "mark": equipment.brand,
+                            "cost": equipment.cost,
+
+                        }
+                    )
+                })
+        })}
+
+
+
+
 
     return (
         <Box>
@@ -110,14 +133,10 @@ export const Cart = () => {
                      marginTop='20px'>
                     <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
                         <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
-                    <button className={"buttonAdd"} onClick={() => navigate('/confirmation')}>Confirm Order</button>
+                    <button className={"buttonAdd"} onClick={() => confirmBill()}>Confirm Order</button>
 
                 </Box>
             </Box>
-            <Box>Bill Id {bill.id}</Box>
-            <Box>Resort name {resort.curortName}</Box>
-            <Box>Resort name {resort.id}</Box>
-            <Box>Bill date {bill.creationData}</Box>
-            <Box>User Id {context.userData.userId}</Box>
+
         </Box>)
 }
