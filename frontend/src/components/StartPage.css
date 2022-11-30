@@ -1,0 +1,162 @@
+.background {
+
+    background-image: url("../files/background.jpg");
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed
+}
+
+.navBar {
+    background: #FFFFFF;
+
+    width: 100vw;
+    height: 80px;
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    box-shadow: 0 2px 4px 3px rgba(21, 54, 74, 0.15)
+
+}
+.backToShop{
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+     color: #4079A0
+}
+.summary{
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+margin-top:50px ;
+    margin-bottom: 30px;
+    color: #193C60;
+}
+
+.logo {
+    width: 170px;
+    height: 30px;
+    position: inherit;
+    margin-left: 47px;
+
+
+}
+.person{
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+       color: #4079A0;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+
+.button {
+
+    width: 75px;
+    height: 40px;
+    background: #4079A0;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 8px;
+}
+.signButton{
+    margin-right:40px ;
+    width: 55px;
+    height: 24px;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #4079A0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+.summaryBar{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+
+    display: flex;
+    align-items: center;
+    text-align: left;
+    letter-spacing: 0.05em;
+
+
+    color: #4A5568;
+}
+.buttonAdd  {
+
+    width: 145px;
+    height: 40px;
+    background: #4079A0;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 4px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 8px;
+}
+.selectSki{
+    font-family: "Arial", serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    color: #193C60;
+}
+.boxSelect{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 24px;
+    gap: 115px;
+    width: 557px;
+    height: 64px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #F2F2F2;
+    border-radius: 4px;
+
+
+    font-family: 'Arial', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333232;
+}
