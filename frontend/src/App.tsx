@@ -1,6 +1,8 @@
 import React, {createContext, useState} from 'react';
 import './App.css';
+import logo from "./logo.svg";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { Wrapper } from "./components/Wrapper/Wrapper";
 import {StartPage} from "./components/StartPage";
 import {Cart} from "./components/Cart";
 import {Resort} from "./components/Resort";
@@ -10,6 +12,12 @@ import {UserData} from "./models/user";
 import {RoleEnum} from "./models/roleEnum";
 import {Confirmation} from "./components/Confirmation";
 import {BillData} from "./models/bill";
+import { LogInPage } from "./LoginPage/LogInPage";
+import { RedirectHandler } from "./components/RedirectHandler";
+import { Profile } from "./components/Profile/Profile";
+import { AppContextProvider } from "./context/AppContext";
+import { AdminPanel } from "./components/AdminPanel";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 interface DataContext {
     resortData: ResortData;
@@ -93,27 +101,33 @@ const [billData, setBillData]=useState<BillData>({
     const billDataModifier=(value: BillData)=>(setBillData(value))
 
     return (
-        <DataContext.Provider value={{
-            resortData: resortData,
-            resortDataModifier: resortDataModifier,
-            userData: userData,
-            userDataModifier: userDataModifier,
-            isChanged:isChanged,
-            isChangeModifier:isChangeModifier,
-            billData: billData,
-            billDataModifier: billDataModifier
-        }}>
-            <ChakraProvider>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<StartPage/>}></Route>
-                        <Route path="/resort" element={<Resort/>}></Route>
-                        <Route path="/cart" element={<Cart/>}></Route>
-                        <Route path="/confirmation" element={<Confirmation/>}></Route>
-                    </Routes>
-                </BrowserRouter>
-            </ChakraProvider>
-        </DataContext.Provider>
+        <AppContextProvider>
+          <DataContext.Provider value={{
+              resortData: resortData,
+              resortDataModifier: resortDataModifier,
+              userData: userData,
+              userDataModifier: userDataModifier,
+              isChanged:isChanged,
+              isChangeModifier:isChangeModifier,
+              billData: billData,
+              billDataModifier: billDataModifier
+          }}>
+              <ChakraProvider>
+                  <BrowserRouter>
+                      <Routes>
+                        <Route path="/" element={<Wrapper />}>
+                          <Route path="/" element={<StartPage/>}></Route>
+                          <Route path="/resort" element={<Resort/>}></Route>
+                          <Route path="/cart" element={<Cart/>}></Route>
+                          <Route path="/confirmation" element={<Confirmation/>}></Route>
+                        </Route>
+                        <Route path="/adminpanel" element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}></Route>
+                        <Route path="/oauth2/redirect" element={<RedirectHandler />}></Route>
+                      </Routes>
+                  </BrowserRouter>
+              </ChakraProvider>
+          </DataContext.Provider>
+        </AppContextProvider>
     );
 }
 
