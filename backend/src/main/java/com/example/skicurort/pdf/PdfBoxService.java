@@ -79,9 +79,9 @@ public class PdfBoxService {
     writeLine(content, 310, 730, null, 10, billDto.creationDate().toString());
     writeLine(content, 300, 710, null, 15, billDto.id().toString());
     writeLine(content, 50, 650, null, 12, billDto.curort().getCurortName());
-    writeLine(content, 470, 650, null, 12, billDto.user().getName());
+    //    writeLine(content, 470, 650, null, 12, billDto.user().getName());
     writeLine(content, 50, 635, null, 12, billDto.curort().getCurortAdress());
-    writeLine(content, 470, 635, null, 12, billDto.user().getEmail());
+    //    writeLine(content, 470, 635, null, 12, billDto.user().getEmail());
     writeLine(content, 50, 620, null, 12, billDto.curort().getCurrortEmail());
     writeLine(content, 50, 605, null, 12, billDto.curort().getCurortPhonenumber().toString());
     writeLine(content, 50, 550, null, 10, "NAME");
