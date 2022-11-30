@@ -7,6 +7,7 @@ public class CurortMapper {
 
   static CurortDTO mapToDTO(Curort curort) {
     return new CurortDTO(
+        curort.getId(),
         curort.getCurortName(),
         curort.getCurortAdress(),
         curort.getCurrortEmail(),

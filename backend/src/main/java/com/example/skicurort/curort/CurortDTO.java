@@ -5,6 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 public record CurortDTO(
+    Long id,
     @Max(value = 100, message = "Name should not be greater than 100")
         @NotNull(message = "Name cannot be empty")
         String curortName,

@@ -4,7 +4,7 @@ import static com.example.skicurort.bill.BillMapper.mapToDTO;
 
 import com.example.skicurort.item.Item;
 import com.example.skicurort.item.ItemRepo;
-import com.example.skicurort.user.UserRepository;
+// import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class BillService {
   private final BillRepo billRepo;
   private final ItemRepo itemRepo;
-  private final UserRepository userRepository;
+  // private final UserRepository userRepository;
 
   public BillDto save(Long userId) {
     Bill bill = new Bill();
