@@ -15,9 +15,9 @@ class CurortServiceTest {
 
   private static final Curort CURORT = new Curort(1L, "Zakopane", "Długa", "a@a.a", 12345678L);
   private static final CurortDTO CURORT_DTO =
-      new CurortDTO("Zakopane", "Długa", "a@a.a", 12345678L);
+      new CurortDTO(1L, "Zakopane", "Długa", "a@a.a", 12345678L);
   private static final CurortDTO NEW_CURORT_DTO =
-      new CurortDTO("Wisła", "Długa", "a@a.a", 12345678L);
+      new CurortDTO(2L, "Wisła", "Długa", "a@a.a", 12345678L);
 
   @Test
   void shouldMaptoDto() {
