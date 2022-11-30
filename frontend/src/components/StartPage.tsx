@@ -46,7 +46,7 @@ export const StartPage = () => {
                             <Box className={"boxSelect"}
                                  justifyContent={"space-between"} key={resort.id}>
                                 <Box onClick={() => [navigate("../resort"),
-                                    context.resortData = resort]}>{resort.curortName + resort.id}
+                                    context.resortData = resort]}>{resort.curortName}
                                 </Box>
                                 {context.userData.userRole === RoleEnum.admin && (
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
