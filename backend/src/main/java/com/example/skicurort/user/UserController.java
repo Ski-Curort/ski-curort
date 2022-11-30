@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   private final UserService userService;
 
-  @GetMapping("/api/users/current-user")
+  @GetMapping({"/api/users/current-user", "/profile"})
   Optional<UserDetailsResponse> getCurentUser(HttpServletRequest request) {
-
     if (request.getUserPrincipal() instanceof Authentication auth && auth.isAuthenticated()) {
       return Optional.ofNullable(request.getUserPrincipal())
           .map(Principal::getName)

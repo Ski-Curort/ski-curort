@@ -12,5 +12,6 @@ public class UserDetailsResponse {
   String displayName;
   String username;
   String email;
+  String imageUrl;
   List<Role> roles;
 }

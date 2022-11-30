@@ -1,5 +1,6 @@
 package com.example.skicurort.user;
 
+import com.example.skicurort.security.GoogleOAuth2UserInfo;
 import java.util.Set;
 import java.util.UUID;
 import javax.persistence.*;
@@ -22,10 +23,21 @@ public class User {
   private String username;
   private String email;
   private String password;
+  private String imageUrl;
 
   @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
   @Enumerated(EnumType.STRING)
   @CollectionTable(name = "user_roles")
   @Column(name = "role")
   private Set<Role> roles;
+
+  public User updateFromGoogle(GoogleOAuth2UserInfo g) {
+    this.name = g.getName();
+    this.email = g.getEmail();
+    this.imageUrl = g.getImageUrl();
+    if (this.username == null) {
+      this.username = g.getEmail();
+    }
+    return this;
+  }
 }
