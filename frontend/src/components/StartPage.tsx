@@ -50,7 +50,7 @@ export const StartPage = () => {
                                 {context.userData.userRole === RoleEnum.admin && (
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
-                                        <EditMenu></EditMenu>
+                                        <EditMenu resortId={resort.id}></EditMenu>
                                         <img alt={"Bin"} src={Bin} onClick={() => deleteResort(resort.id)}/></Box>)}
                             </Box>)
                     })}

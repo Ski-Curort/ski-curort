@@ -13,8 +13,10 @@ import Edit from "../files/Vector.png";
 import React, {useContext} from "react";
 import {DataContext} from "../App";
 
-
-export function EditMenu() {
+interface EditMenuProps{
+    resortId:number
+}
+export function EditMenu(props: EditMenuProps) {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
@@ -54,7 +56,7 @@ export function EditMenu() {
 
 
     async function handleClic(id: number) {
-        await fetch(`http://localhost:8080/api/curort/${id}`
+        await fetch(`http://localhost:8080/api/curort/${props.resortId}`
 
             , {
                 method: 'PUT',
