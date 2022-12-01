@@ -9,8 +9,7 @@ export const RedirectHandler = () => {
 
   if(token){
     localStorage.setItem(ACCESS_TOKEN, token);
-    return <Navigate to={"/profile"} />
   }
 
-  return <Navigate to={"/login"}/>;
+  return <Navigate to={"/"}/>;
 };

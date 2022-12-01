@@ -1,4 +1,4 @@
-import {NavBar} from "./navBar";
+
 import {
     Box,
     FormControl,
@@ -90,7 +90,6 @@ export const Cart = () => {
 
     return (
         <Box>
-            <NavBar/>
             <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
                 <p className={"summary"}>Summary:</p>
 

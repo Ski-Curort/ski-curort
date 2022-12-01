@@ -1,11 +1,13 @@
-import { Button, useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 import { useCallback, useEffect } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { UserApi } from "../../api/UserApi";
-import { ACCESS_TOKEN } from "../../constants";
+import { ACCESS_TOKEN, GOOGLE_AUTH_URL } from "../../constants";
 import useAppContext from "../../hooks/useAppContext";
 import useAxios from "../../hooks/userAxios";
 import "./Wrapper.css";
+import Logo from "../../files/logo.svg";
+import Person from "../../files/Vector (2).png";
 
 export const Wrapper = () => {
   const axios = useAxios();
@@ -41,27 +43,57 @@ export const Wrapper = () => {
   };
 
   const onLogin = () => {
-    navigate("/login");
+    window.location.href = GOOGLE_AUTH_URL;
   };
 
   return (
     <div className="container">
-      <div className="menu-wraper">
-        <Link to={"/"}>Ski Resort</Link>
-        {!context.currentUser ? (
-          <Button onClick={onLogin} colorScheme={"blue"}>
-            Log in
-          </Button>
-        ) : (
-          <div className="nav-logged">
-            <span>Logged as:{" "} 
-            <Link to="/profile"> {context.currentUser.displayName}</Link></span>
-            <Button onClick={onLogout} colorScheme={"blue"}>
-              Logout
-            </Button>
-          </div>
-        )}
-      </div>
+      <Box className={"navBar"}>
+        <Link to={"/"}>
+          <img className={"logo"} src={Logo} alt="logo"></img>
+        </Link>
+
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          {!context.currentUser ? (
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              {/* <button className={"signButton"}>Singup</button> */}
+              <button onClick={onLogin} className={"button"}>
+                Login
+              </button>
+              <Box marginRight="43px"></Box>
+            </Box>
+          ) : (
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <Box display="flex" flexDirection={"row"}>
+                <img alt={"Person Icon"} src={Person} width="16px" />
+                <p className={"person"}>
+                  {" "}
+                  <Link to="/profile"> {context.currentUser.displayName}</Link>
+                </p>
+              </Box>
+              <button onClick={onLogout} className={"button"}>
+                Logout
+              </button>
+              <Box marginRight="43px"></Box>
+            </Box>
+          )}
+        </Box>
+      </Box>
       <Outlet />
     </div>
   );
