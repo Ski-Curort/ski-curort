@@ -1,5 +1,5 @@
-export enum RoleEnum{
+export enum RoleEnum {
     unsign = "1",
     sign = "2",
-    admin="3"
+    admin = "3"
 }

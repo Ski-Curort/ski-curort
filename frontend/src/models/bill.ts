@@ -1,5 +1,6 @@
 import {Item} from "./item";
-import{ResortData} from "./resorts"
+import {ResortData} from "./resorts"
+
 export interface BillData {
 
     id: number;
@@ -7,8 +8,6 @@ export interface BillData {
     creationData: string;
     curort: ResortData;
     itemList: [Item]
-
-
 
 
 }

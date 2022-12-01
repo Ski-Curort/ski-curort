@@ -1,11 +1,11 @@
-
 import {Box} from "@chakra-ui/react";
 import {NavBar} from "./navBar";
 
 
-export const Confirmation=()=>{
+export const Confirmation = () => {
 
-    return(
+    return (
         <Box>
-<NavBar/>
-        </Box>)}
+            <NavBar/>
+        </Box>)
+}

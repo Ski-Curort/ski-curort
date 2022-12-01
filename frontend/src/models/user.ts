@@ -10,5 +10,5 @@ export interface User {
 export interface UserData {
     userId: number;
     userName: string;
-    userRole:RoleEnum
+    userRole: RoleEnum
 }

@@ -17,55 +17,48 @@ import {DataContext} from "../App";
 export const Cart = () => {
 
     const equipments = [{
-        id:1,
+        id: 1,
         quipmentType: "Ski",
         brand: "Brand1",
         cost: 10
-    },{id:2,
+    }, {
+        id: 2,
         quipmentType: "Gogle",
         brand: "Brand2",
         cost: 20
-    },{id:3,
+    }, {
+        id: 3,
         quipmentType: "Helmet",
         brand: "Brand3",
         cost: 50
-    },{id:4,
+    }, {
+        id: 4,
         quipmentType: "Snowboard",
         brand: "Brand4",
         cost: 55
     }]
-
-
     const navigate = useNavigate()
     const context = useContext(DataContext);
     const [bill, setBill] = useState(context.billData)
     const [resort, setResort] = useState(context.billData.curort)
     useEffect(() => {
         getApiData()
-    }, []);
-
+    });
     useEffect(() => {
         setResort(context.resortData);
-
-    }, []);
-
+    },[context.resortData]);
     const getApiData = async () => {
-
-        const response = await fetch(`http://localhost:8088/api/bill/${context.userData.userId}`
-
+        const response = await fetch(`http://localhost:8080/api/bill/${context.userData.userId}`
             , {
                 method: 'POST',
                 mode: 'cors',
                 headers: {'Content-Type': 'application/json'}
             }).then().then((response) => response.json());
-
         setBill(response)
-
-
     };
-    function confirmBill(){
 
-        equipments.forEach((equipment)=> {
+    function confirmBill() {
+        equipments.forEach((equipment) => {
             fetch(`http://localhost:8080/api/item/${bill.id}/${2}`,
 
                 {
@@ -74,19 +67,14 @@ export const Cart = () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(
                         {
-                            "id":equipment.id,
+                            "id": equipment.id,
                             "type": equipment.quipmentType,
                             "mark": equipment.brand,
                             "cost": equipment.cost,
-
-                        }
-                    )
+                        })
                 })
-        })}
-
-
-
-
+        })
+    }
 
     return (
         <Box>
@@ -103,8 +91,8 @@ export const Cart = () => {
                         <Box width='96px'></Box>
 
                     </Box>
-                    {equipments.map((equipment)=>{
-                        return( <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
+                    {equipments.map((equipment) => {
+                        return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                                      flexDirection={"row"} marginTop='12px' marginBottom='12px' key={equipment.id}>
                             <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.quipmentType}</Box>
                             <Box width='252px' paddingLeft='24px'>{equipment.brand}</Box>
@@ -120,21 +108,18 @@ export const Cart = () => {
                                 </NumberInput>
                             </FormControl></Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                <img alt={"Bin"} src={Bin} /></Box>
-
+                                <img alt={"Bin"} src={Bin}/>
+                            </Box>
                         </Box>)
-
                     })}
-
-
                 </Box>
                 <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
                      marginTop='20px'>
                     <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
                         <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
                     <button className={"buttonAdd"} onClick={() => confirmBill()}>Confirm Order</button>
-
                 </Box>
+                <Box>{bill.id}</Box>
             </Box>
 
         </Box>)
