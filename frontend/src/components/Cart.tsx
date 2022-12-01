@@ -76,6 +76,12 @@ export const Cart = () => {
         })
     }
 
+    function deleteItem(id: number){
+        const newEquipments=equipments.filter(equipment=>equipment.id!==id)
+equipments.splice(0,equipments.length);
+       return equipments.concat(newEquipments);
+    }
+
     return (
         <Box>
             <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
@@ -108,7 +114,7 @@ export const Cart = () => {
                                 </NumberInput>
                             </FormControl></Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                <img alt={"Bin"} src={Bin}/>
+                                <img alt={"Bin"} src={Bin} onClick={()=>deleteItem(equipment.id)}/>
                             </Box>
                         </Box>)
                     })}

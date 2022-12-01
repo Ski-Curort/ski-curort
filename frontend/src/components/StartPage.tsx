@@ -7,7 +7,7 @@ import {RoleEnum} from "../models/roleEnum";
 import Bin from "../files/Vector (1).png"
 import {EditMenu} from "../models/editModal";
 import {AddMenu} from "../models/addModal";
-import {NavBar} from "./navBar";
+
 
 
 export const StartPage = () => {
