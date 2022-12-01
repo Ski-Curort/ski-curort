@@ -11,6 +11,9 @@ public record EquipmentDTO(
         String type,
     @Max(value = 100, message = "mark should not be greater than 100")
         @NotNull(message = "mark of equipment shouldn't be empty")
+        String size,
+    @Max(value = 100, message = "mark should not be greater than 100")
+        @NotNull(message = "mark of equipment shouldn't be empty")
         String mark,
     boolean available,
     @NotNull(message = "cost of equipment shouldn't be empty") BigDecimal cost) {}
