@@ -29,7 +29,6 @@ public class EquipmentService {
     return mapToDTOs(equipmentRepository.findAllByType(type));
   }
 
-
   List<EquipmentDTO> getEquipmentByTypeAndSize(String type, String size) {
     return mapToDTOs(equipmentRepository.findAllByTypeAndSize(type, size));
   }
@@ -68,5 +67,4 @@ public class EquipmentService {
     }
     equipmentRepository.deleteById(id);
   }
-
 }

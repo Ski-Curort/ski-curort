@@ -7,7 +7,7 @@ public class EquipmentMapper {
 
   static EquipmentDTO mapToDTO(Equipment equipment) {
     return new EquipmentDTO(
-            equipment.getId(),
+        equipment.getId(),
         equipment.getType(),
         equipment.getSize(),
         equipment.getMark(),

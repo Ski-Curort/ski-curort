@@ -1,7 +1,5 @@
 package com.example.skicurort.weather;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

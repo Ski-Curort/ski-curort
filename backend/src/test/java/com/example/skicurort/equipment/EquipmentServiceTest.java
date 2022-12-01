@@ -15,9 +15,9 @@ class EquipmentServiceTest {
   private static final Equipment equipment =
       new Equipment(1L, "ski", "XL", "HEAD", true, new BigDecimal(450.99));
   private static final EquipmentDTO equipmentDTO =
-      new EquipmentDTO(1L,"ski", "XL", "HEAD", true, new BigDecimal(450.99));
+      new EquipmentDTO(1L, "ski", "XL", "HEAD", true, new BigDecimal(450.99));
   private static final EquipmentDTO newEquipmentDTO =
-      new EquipmentDTO(1L,"snowboard", "XL", "HEAD", false, new BigDecimal(450.99));
+      new EquipmentDTO(1L, "snowboard", "XL", "HEAD", false, new BigDecimal(450.99));
 
   @Test
   void shouldFindEquipmentById() {

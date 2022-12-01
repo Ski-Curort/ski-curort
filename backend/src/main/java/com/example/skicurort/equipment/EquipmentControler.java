@@ -34,6 +34,7 @@ public class EquipmentControler {
   ResponseEntity<List<EquipmentDTO>> getEquipmentByType(@PathVariable String type) {
     return ResponseEntity.ok(equipmentService.getAllEquipmentByType(type));
   }
+
   @GetMapping("/search/{id}")
   ResponseEntity<EquipmentDTO> getEquipmentById(@PathVariable Long id) {
     return ResponseEntity.ok(equipmentService.getOneItem(id));
