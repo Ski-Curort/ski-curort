@@ -4,11 +4,12 @@ import static com.example.skicurort.bill.BillMapper.mapToDTO;
 
 import com.example.skicurort.item.Item;
 import com.example.skicurort.item.ItemRepo;
-// import com.example.skicurort.user.UserRepository;
+import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,12 @@ import org.springframework.stereotype.Service;
 public class BillService {
   private final BillRepo billRepo;
   private final ItemRepo itemRepo;
-  // private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-  public BillDto save(Long userId) {
+  public BillDto save(UUID userId) {
     Bill bill = new Bill();
     bill.setCreationDate(new Date());
-    // bill.setUser(userRepository.findById(userId));
-    // TODO zakomentowane ponieważ nie ma metody findbyId w user
+    bill.setUser(userRepository.getReferenceById(userId));
     billRepo.save(bill);
     return mapToDTO(Optional.of(bill));
   }

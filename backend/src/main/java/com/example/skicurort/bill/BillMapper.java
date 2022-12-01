@@ -9,7 +9,7 @@ public class BillMapper {
         bill.get().getId(),
         bill.get().getTotalCost(),
         bill.get().getCreationDate(),
-        // bill.get().getUser(),
+        bill.get().getUser(),
         bill.get().getCurort(),
         bill.get().itemList);
   }
@@ -19,7 +19,7 @@ public class BillMapper {
     bill.setId(billDto.id());
     bill.setTotalCost(billDto.totalCost());
     bill.setCreationDate(billDto.creationDate());
-    // bill.setUser(billDto.user());
+    bill.setUser(billDto.user());
     bill.setCurort(billDto.curort());
     bill.setItemList(billDto.itemList());
 
