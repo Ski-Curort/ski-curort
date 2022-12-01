@@ -17,6 +17,7 @@ public class UserService {
         .displayName(user.getName())
         .username(user.getUsername())
         .email(user.getEmail())
+        .imageUrl(user.getImageUrl())
         .roles(user.getRoles().stream().toList())
         .build();
   }

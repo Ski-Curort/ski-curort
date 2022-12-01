@@ -36,7 +36,6 @@ export const StartPage = () => {
 
     const navigate = useNavigate()
     return (<Box className={"background"} display="flex" flexDirection={"column"} alignContent={"center"}>
-            <NavBar/>
             <Box display={"flex"} flexDirection={"column"} alignItems={"center"}
                  justifyItems={"center"} justifyContent={"center"} height='100%'>
                 <Stack maxWidth='557px' minWidth='557px' marginRight='51%' marginLeft='11%'>
