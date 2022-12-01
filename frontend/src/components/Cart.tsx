@@ -46,7 +46,7 @@ export const Cart = () => {
     });
     useEffect(() => {
         setResort(context.resortData);
-    });
+    },[context.resortData]);
     const getApiData = async () => {
         const response = await fetch(`http://localhost:8080/api/bill/${context.userData.userId}`
             , {
