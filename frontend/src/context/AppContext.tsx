@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { AppContextType } from "../models/AppContextType";
-import { User } from "../models/User";
+import { User } from "../models/user";
 
 const defaultSettings: AppContextType = {
   currentUser: null,

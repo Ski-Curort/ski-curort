@@ -120,6 +120,9 @@ const [billData, setBillData]=useState<BillData>({
                           <Route path="/resort" element={<Resort/>}></Route>
                           <Route path="/cart" element={<Cart/>}></Route>
                           <Route path="/confirmation" element={<Confirmation/>}></Route>
+                          <Route index element={<StartPage />}></Route>
+                          <Route path="/login" element={<LogInPage />}></Route>
+                          <Route path="/profile" element={<Profile />}></Route>
                         </Route>
                         <Route path="/adminpanel" element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}></Route>
                         <Route path="/oauth2/redirect" element={<RedirectHandler />}></Route>
