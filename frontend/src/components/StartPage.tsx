@@ -21,7 +21,7 @@ export const StartPage = () => {
 
     const getApiData = async () => {
         const response = await fetch(
-            "http://localhost:8088/api/curort/"
+            "http://localhost:8080/api/curort/"
         ).then((response) => response.json());
 
         setResorts(response);
@@ -30,7 +30,7 @@ export const StartPage = () => {
 
     function deleteResort(id: number) {
 
-        fetch(`http://localhost:8088/api/curort/${id}`, {method: 'DELETE'})
+        fetch(`http://localhost:8080/api/curort/${id}`, {method: 'DELETE'})
         context.isChangeModifier(true)
     }
 

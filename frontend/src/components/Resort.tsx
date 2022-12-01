@@ -5,7 +5,7 @@ import {Box, Button} from "@chakra-ui/react";
 
 
 
-export const Resort=()=> {
+export const Resort = () => {
 
     const context = useContext(DataContext);
     const navigate = useNavigate()

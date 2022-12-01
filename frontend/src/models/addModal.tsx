@@ -9,11 +9,11 @@ import {
     ModalOverlay,
     useDisclosure
 } from "@chakra-ui/react";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {DataContext} from "../App";
 
 
-export function AddMenu()  {
+export function AddMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
 
@@ -49,33 +49,31 @@ export function AddMenu()  {
             curortPhonenumber: event.currentTarget.valueAsNumber
         });
     };
-async function  handleClic() {
-    await fetch(`http://localhost:8088/api/curort/`
 
-        , {
-            method: 'POST',
-            mode: 'cors',
-            headers: {'Content-Type': 'application/json',},
-            body: JSON.stringify(
-                {
-                    "curortName": context.resortData.curortName,
-                    "curortAdress": context.resortData.curortAdress,
-                    "currortEmail": context.resortData.currortEmail,
-                    "curortPhonenumber": context.resortData.curortPhonenumber
-                }
-            )
-        })
-    context.isChangeModifier(true)
+    async function handleClic() {
+        await fetch(`http://localhost:8080/api/curort/`
 
-    onClose();
-
-
-}
+            , {
+                method: 'POST',
+                mode: 'cors',
+                headers: {'Content-Type': 'application/json',},
+                body: JSON.stringify(
+                    {
+                        "curortName": context.resortData.curortName,
+                        "curortAdress": context.resortData.curortAdress,
+                        "currortEmail": context.resortData.currortEmail,
+                        "curortPhonenumber": context.resortData.curortPhonenumber
+                    }
+                )
+            })
+        context.isChangeModifier(true)
+        onClose();
+    }
 
     return (
         <>
 
-            <button  className={"buttonAdd"}  onClick={onOpen}>+ Add Resort</button>
+            <button className={"buttonAdd"} onClick={onOpen}>+ Add Resort</button>
 
             <Modal
 
@@ -100,7 +98,8 @@ async function  handleClic() {
                         </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>Phone number</FormLabel>
-                            <Input placeholder='Phone number' value={context.resortData.curortPhonenumber} type={"number"}
+                            <Input placeholder='Phone number' value={context.resortData.curortPhonenumber}
+                                   type={"number"}
                                    onChange={onResortPhoneChanged}/>
                         </FormControl>
                         <FormControl mt={4}>
@@ -112,7 +111,7 @@ async function  handleClic() {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={()=>handleClic()}>
+                        <Button colorScheme='blue' mr={3} onClick={() => handleClic()}>
                             Add
                         </Button>
                         <Button onClick={onClose}>Cancel</Button>

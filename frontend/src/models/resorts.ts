@@ -1,7 +1,7 @@
 export interface ResortData {
-    id:number,
+    id: number,
     curortName: string,
     curortAdress: string,
-    currortEmail:string,
-    curortPhonenumber:number,
+    currortEmail: string,
+    curortPhonenumber: number,
 }

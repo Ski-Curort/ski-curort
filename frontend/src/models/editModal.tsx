@@ -14,9 +14,9 @@ import React, {useContext, useEffect, useState} from "react";
 import {DataContext} from "../App";
 
 
-export function  EditMenu()   {
+export function EditMenu() {
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
 
     const onResortNameChanged = (
@@ -53,8 +53,8 @@ export function  EditMenu()   {
     };
 
 
-    async function  handleClic(id:number) {
-        await fetch(`http://localhost:8088/api/curort/${id}`
+    async function handleClic(id: number) {
+        await fetch(`http://localhost:8080/api/curort/${id}`
 
             , {
                 method: 'PUT',
@@ -79,17 +79,17 @@ export function  EditMenu()   {
         <>
 
             <img src={Edit} onClick={onOpen
-                                }/>
+            }/>
 
             <Modal
 
                 isOpen={isOpen}
                 onClose={onClose}
             >
-                <ModalOverlay />
+                <ModalOverlay/>
                 <ModalContent>
                     <ModalHeader>Edit Resort</ModalHeader>
-                    <ModalCloseButton />
+                    <ModalCloseButton/>
                     <ModalBody pb={6}>
                         <FormControl>
                             <FormLabel>Resort Name</FormLabel>
@@ -116,7 +116,8 @@ export function  EditMenu()   {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button className={"button"} colorScheme='blue' mr={3} onClick={()=>handleClic(context.resortData.id)}>
+                        <Button className={"button"} colorScheme='blue' mr={3}
+                                onClick={() => handleClic(context.resortData.id)}>
                             Edit
                         </Button>
                         <Button className={"button"} onClick={onClose}>Cancel</Button>
