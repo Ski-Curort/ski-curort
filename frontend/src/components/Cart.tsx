@@ -43,10 +43,10 @@ export const Cart = () => {
     const [resort, setResort] = useState(context.billData.curort)
     useEffect(() => {
         getApiData()
-    }, []);
+    });
     useEffect(() => {
         setResort(context.resortData);
-    }, []);
+    });
     const getApiData = async () => {
         const response = await fetch(`http://localhost:8080/api/bill/${context.userData.userId}`
             , {

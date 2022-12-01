@@ -10,7 +10,7 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import Edit from "../files/Vector.png";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import {DataContext} from "../App";
 
 
@@ -78,7 +78,7 @@ export function EditMenu() {
     return (
         <>
 
-            <img src={Edit} onClick={onOpen
+            <img alt={"Edit"} src={Edit} onClick={onOpen
             }/>
 
             <Modal
