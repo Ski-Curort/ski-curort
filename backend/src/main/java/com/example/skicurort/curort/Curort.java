@@ -32,11 +32,4 @@ public class Curort {
 
   @Column(name = "curort_phone")
   private Long curortPhonenumber;
-
-  /*@OneToMany
-   private <List>Person;
-
-  @OneToMany
-  private <List>Shop;*/
-
 }
