@@ -1,12 +1,6 @@
 
 import {
     Box,
-    FormControl,
-
-    NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput, NumberInputField,
-    NumberInputStepper
 } from "@chakra-ui/react";
 
 import {useNavigate} from "react-router-dom";

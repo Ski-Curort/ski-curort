@@ -52,7 +52,7 @@ export const StartPage = () => {
                                 <Box onClick={() => [navigate("../resort"),
                                     context.resortData = resort]}>{resort.curortName}
                                 </Box>
-                                {userContext.currentUser?.roles.includes(Role.ADMIN) && (
+                                {userContext.currentUser?.roles.includes(Role.USER) && (
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
                                         <EditMenu resortId={resort.id}></EditMenu>
@@ -60,7 +60,7 @@ export const StartPage = () => {
                             </Box>)
                     })}
                     <Box display={"flex"}
-                         flexDirection={"row-reverse"}>{userContext.currentUser?.roles.includes(Role.ADMIN)  && (<AddMenu></AddMenu>)}
+                         flexDirection={"row-reverse"}>{userContext.currentUser?.roles.includes(Role.USER)  && (<AddMenu></AddMenu>)}
                     </Box>
                 </Stack>
             </Box>
