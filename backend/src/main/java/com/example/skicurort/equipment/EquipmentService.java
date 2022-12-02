@@ -25,6 +25,10 @@ public class EquipmentService {
     return mapToDTOs(equipmentRepository.findAll());
   }
 
+  List<EquipmentDTO> getByCurortId(Long id) {
+    return mapToDTOs(equipmentRepository.findAllByCurortId(id));
+  }
+
   List<EquipmentDTO> getAllEquipmentByType(String type) {
     return mapToDTOs(equipmentRepository.findAllByType(type));
   }

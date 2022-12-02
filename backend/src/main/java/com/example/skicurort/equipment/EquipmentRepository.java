@@ -9,4 +9,6 @@ public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
   List<Equipment> findAllByTypeAndSize(String type, String Size);
 
   List<Equipment> findAllByTypeAndSizeAndAvailable(String type, String Size, boolean available);
+
+  List<Equipment> findAllByCurortId(Long id);
 }

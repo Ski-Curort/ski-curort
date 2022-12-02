@@ -7,13 +7,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.example.skicurort.curort.Curort;
 import java.math.BigDecimal;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 class EquipmentServiceTest {
   private static final Equipment equipment =
-      new Equipment(1L, "ski", "XL", "HEAD", true, new BigDecimal(450.99));
+      new Equipment(1L, "ski", "XL", "HEAD", true, new BigDecimal(450.99), new Curort());
   private static final EquipmentDTO equipmentDTO =
       new EquipmentDTO(1L, "ski", "XL", "HEAD", true, new BigDecimal(450.99));
   private static final EquipmentDTO newEquipmentDTO =
