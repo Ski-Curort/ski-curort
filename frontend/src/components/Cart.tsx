@@ -1,12 +1,6 @@
 
 import {
     Box,
-    FormControl,
-
-    NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput, NumberInputField,
-    NumberInputStepper
 } from "@chakra-ui/react";
 
 import {useNavigate} from "react-router-dom";
@@ -17,30 +11,38 @@ import {DataContext} from "../App";
 export const Cart = () => {
 
     const equipments = [{
-        id: 1,
-        quipmentType: "Ski",
-        brand: "Brand1",
-        cost: 10
+        itemId: 1,
+        equipmentType: "Ski",
+        brand: "gf",
+        totalPrice: 11,
+        amount: 0,
     }, {
-        id: 2,
-        quipmentType: "Gogle",
-        brand: "Brand2",
-        cost: 20
+        itemId: 2,
+        equipmentType: "google",
+        brand: "sdf",
+        totalPrice: 22,
+        amount: 0,
     }, {
-        id: 3,
-        quipmentType: "Helmet",
-        brand: "Brand3",
-        cost: 50
+        itemId: 3,
+        equipmentType: "snowboard",
+        brand: "gdf",
+        totalPrice: 33,
+        amount: 0,
     }, {
-        id: 4,
-        quipmentType: "Snowboard",
-        brand: "Brand4",
-        cost: 55
+        itemId: 4,
+        equipmentType: "sank",
+        brand: "fdg",
+        totalPrice: 44,
+        amount: 0,
     }]
+
     const navigate = useNavigate()
     const context = useContext(DataContext);
     const [bill, setBill] = useState(context.billData)
     const [resort, setResort] = useState(context.billData.curort)
+
+
+
     useEffect(() => {
         getApiData()
     });
@@ -67,13 +69,19 @@ export const Cart = () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(
                         {
-                            "id": equipment.id,
-                            "type": equipment.quipmentType,
+                            "id": equipment.itemId,
+                            "type": equipment.equipmentType,
                             "mark": equipment.brand,
-                            "cost": equipment.cost,
+                            "cost": equipment.totalPrice
                         })
                 })
         })
+    }
+
+    function deleteItem(id: number){
+        const newEquipments=equipments.filter(equipment=>equipment.itemId!==id)
+equipments.splice(0,equipments.length);
+       return equipments.concat(newEquipments);
     }
 
     return (
@@ -93,22 +101,13 @@ export const Cart = () => {
                     </Box>
                     {equipments.map((equipment) => {
                         return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
-                                     flexDirection={"row"} marginTop='12px' marginBottom='12px' key={equipment.id}>
-                            <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.quipmentType}</Box>
+                                     flexDirection={"row"} marginTop='12px' marginBottom='12px' key={equipment.itemId}>
+                            <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.equipmentType}</Box>
                             <Box width='252px' paddingLeft='24px'>{equipment.brand}</Box>
-                            <Box width='130px' paddingLeft='24px'>{equipment.cost}</Box>
-                            <Box width='175px' paddingLeft='24px'><FormControl>
-
-                                <NumberInput max={10} min={1}>
-                                    <NumberInputField/>
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper/>
-                                        <NumberDecrementStepper/>
-                                    </NumberInputStepper>
-                                </NumberInput>
-                            </FormControl></Box>
+                            <Box width='130px' paddingLeft='24px'>{equipment.totalPrice}</Box>
+                            <Box width='175px' paddingLeft='24px'>{equipment.amount}</Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                <img alt={"Bin"} src={Bin}/>
+                                <img alt={"Bin"} src={Bin} onClick={()=>deleteItem(equipment.itemId)}/>
                             </Box>
                         </Box>)
                     })}
@@ -117,7 +116,7 @@ export const Cart = () => {
                      marginTop='20px'>
                     <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
                         <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
-                    <button className={"buttonAdd"} onClick={() => confirmBill()}>Confirm Order</button>
+                    <button className={"buttonAdd"} onClick={() => [confirmBill(), navigate("/confirmation")]}>Confirm Order</button>
                 </Box>
                 <Box>{bill.id}</Box>
             </Box>
