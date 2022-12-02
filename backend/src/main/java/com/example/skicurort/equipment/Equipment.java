@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Equipment {
   @Id
@@ -21,11 +23,8 @@ public class Equipment {
   private Long id;
 
   private String type;
+  private String size;
   private String mark;
   private boolean available;
   private BigDecimal cost;
-  // private Set<LocalDateTime> reservationDate;
-
-  // @ManyToOne
-  // private Shop shop;
 }

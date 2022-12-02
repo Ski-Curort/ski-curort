@@ -1,11 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN } from "../constants";
+import {ACCESS_TOKEN, GOOGLE_AUTH_URL} from "../constants";
 
 export const authorizedApi = axios.create();
 
 export const useAxios = () => {
-const navigate = useNavigate();
 
   authorizedApi.interceptors.request.use((config: AxiosRequestConfig) => {
     return {
@@ -24,7 +22,7 @@ const navigate = useNavigate();
     },
     (error) => {
       if (error.response.status === 401) {
-        navigate("/login");
+        window.location.href = GOOGLE_AUTH_URL;
       }
       return Promise.reject(error);
     }

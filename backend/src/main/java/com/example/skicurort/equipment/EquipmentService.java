@@ -29,6 +29,15 @@ public class EquipmentService {
     return mapToDTOs(equipmentRepository.findAllByType(type));
   }
 
+  List<EquipmentDTO> getEquipmentByTypeAndSize(String type, String size) {
+    return mapToDTOs(equipmentRepository.findAllByTypeAndSize(type, size));
+  }
+
+  List<EquipmentDTO> getEquipmentByTypeAndSizeAndAvailable(
+      String type, String size, boolean available) {
+    return mapToDTOs(equipmentRepository.findAllByTypeAndSizeAndAvailable(type, size, available));
+  }
+
   EquipmentDTO getOneItem(Long id) {
     return mapToDTO(
         equipmentRepository
@@ -40,7 +49,7 @@ public class EquipmentService {
     return mapToDTO(equipmentRepository.save(mapToEntity(equipmentDTO)));
   }
 
-  EquipmentDTO editEquipment(Long id, EquipmentDTO equipmentDTO) throws NoSuchElementException {
+  EquipmentDTO editEquipment(EquipmentDTO equipmentDTO, Long id) throws NoSuchElementException {
     Equipment equipment =
         equipmentRepository
             .findById(id)
@@ -52,11 +61,10 @@ public class EquipmentService {
     return mapToDTO(equipmentRepository.save(equipment));
   }
 
-  void deleteEquipment(Long id) {
-    Equipment equipment =
-        equipmentRepository
-            .findById(id)
-            .orElseThrow(() -> new NoSuchElementException("item with id: " + id + " not exist"));
+  void deleteEquipment(Long id) throws NoSuchElementException {
+    if (!equipmentRepository.existsById(id)) {
+      throw new NoSuchElementException();
+    }
     equipmentRepository.deleteById(id);
   }
 }
