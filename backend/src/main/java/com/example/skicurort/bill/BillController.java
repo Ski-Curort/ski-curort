@@ -30,9 +30,9 @@ public class BillController {
   }
 
   @PostMapping("/{userId}")
-  public ResponseEntity<BillDto> save(@PathVariable UUID userId) throws NoIdException {
+  public ResponseEntity<BillDto> save(@PathVariable String name) throws NoIdException {
 
-    return ResponseEntity.ok(billService.save(userId));
+    return ResponseEntity.ok(billService.save(name));
   }
 
   @GetMapping("/user/{userName)")

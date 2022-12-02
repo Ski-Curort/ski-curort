@@ -29,12 +29,12 @@ public class ItemController {
     return ResponseEntity.ok(itemService.findByBillId(billid));
   }
 
-  @PostMapping("/{billId}/{quantity}")
+  @PostMapping("/{billId}")
   public ResponseEntity<ItemDto> save(
-      @RequestBody EquipmentDTO equipmentDTO, @PathVariable Long billId, Long quantity)
+      @RequestBody EquipmentDTO equipmentDTO, @PathVariable Long billId)
       throws NoIdException {
 
-    return ResponseEntity.ok(itemService.addItem(equipmentDTO, billId, quantity));
+    return ResponseEntity.ok(itemService.addItem(equipmentDTO, billId));
   }
 
   @ExceptionHandler(NoIdException.class)

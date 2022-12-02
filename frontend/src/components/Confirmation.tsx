@@ -1,20 +1,13 @@
-import {
-    Box,
-    FormControl, NumberDecrementStepper,
-    NumberIncrementStepper,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper
-} from "@chakra-ui/react";
-import {NavBar} from "./navBar";
+import {Box} from "@chakra-ui/react";
 import {useContext} from "react";
 import {DataContext} from "../App";
-import Bin from "../files/Vector (1).png";
 import {useNavigate} from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 
 export const Confirmation = () => {
     const context = useContext(DataContext);
+    const contextUser=useContext(UserContext)
     const navigate = useNavigate()
     function printBill(){
         fetch(`http://localhost:8080/api/pdf/${context.billData.id}`,
@@ -30,7 +23,8 @@ export const Confirmation = () => {
                     <p className={"summary"}>Confirmation:</p>
                     <p>Bill NO. {context.billData.id}</p>
                     <p>Date  {context.billData.creationData}</p>
-                    <p>User name: {context.userData.userName}</p>
+                    <p>User name: {contextUser.currentUser?.displayName}</p>
+                    <p>User e-mail: {contextUser.currentUser?.email}</p>
 
                     <Box width='908px'>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}

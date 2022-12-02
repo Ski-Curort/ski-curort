@@ -11,6 +11,6 @@ public record BillDto(
     Long id,
     BigDecimal totalCost,
     Date creationDate,
-    User user,
+    String userName,
     Curort curort,
     List<Item> itemList) {}

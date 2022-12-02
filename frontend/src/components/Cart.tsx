@@ -1,4 +1,3 @@
-
 import {
     Box,
 } from "@chakra-ui/react";
@@ -7,6 +6,8 @@ import {useNavigate} from "react-router-dom";
 import Bin from "../files/Vector (1).png";
 import {useContext, useEffect, useState} from "react";
 import {DataContext} from "../App";
+import {authorizedApi} from "../hooks/userAxios";
+import UserContext from "../context/UserContext";
 
 export const Cart = () => {
 
@@ -40,22 +41,19 @@ export const Cart = () => {
     const context = useContext(DataContext);
     const [bill, setBill] = useState(context.billData)
     const [resort, setResort] = useState(context.billData.curort)
-
-
+    const contextUser=useContext(UserContext)
 
     useEffect(() => {
         getApiData()
     });
     useEffect(() => {
         setResort(context.resortData);
-    },[context.resortData]);
+    }, [context.resortData]);
     const getApiData = async () => {
-        const response = await fetch(`http://localhost:8080/api/bill/${context.userData.userId}`
-            , {
-                method: 'POST',
-                mode: 'cors',
-                headers: {'Content-Type': 'application/json'}
-            }).then().then((response) => response.json());
+        const response = await authorizedApi({
+            method: 'post',
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.username}`,
+        }).then((response) => response.data);
         setBill(response)
     };
 
@@ -78,10 +76,10 @@ export const Cart = () => {
         })
     }
 
-    function deleteItem(id: number){
-        const newEquipments=equipments.filter(equipment=>equipment.itemId!==id)
-equipments.splice(0,equipments.length);
-       return equipments.concat(newEquipments);
+    function deleteItem(id: number) {
+        const newEquipments = equipments.filter(equipment => equipment.itemId !== id)
+        equipments.splice(0, equipments.length);
+        return equipments.concat(newEquipments);
     }
 
     return (
@@ -107,7 +105,7 @@ equipments.splice(0,equipments.length);
                             <Box width='130px' paddingLeft='24px'>{equipment.totalPrice}</Box>
                             <Box width='175px' paddingLeft='24px'>{equipment.amount}</Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                <img alt={"Bin"} src={Bin} onClick={()=>deleteItem(equipment.itemId)}/>
+                                <img alt={"Bin"} src={Bin} onClick={() => deleteItem(equipment.itemId)}/>
                             </Box>
                         </Box>)
                     })}
@@ -116,7 +114,9 @@ equipments.splice(0,equipments.length);
                      marginTop='20px'>
                     <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
                         <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
-                    <button className={"buttonAdd"} onClick={() => [confirmBill(), navigate("/confirmation")]}>Confirm Order</button>
+                    <button className={"buttonAdd"} onClick={() => [confirmBill(), navigate("/confirmation")]}>Confirm
+                        Order
+                    </button>
                 </Box>
                 <Box>{bill.id}</Box>
             </Box>

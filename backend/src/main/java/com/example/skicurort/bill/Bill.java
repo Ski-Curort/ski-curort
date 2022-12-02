@@ -29,7 +29,7 @@ public class Bill {
   @Column(name = "creation_date")
   private Date creationDate;
 
-  @ManyToOne private User user;
+  private  String userName;
 
   @ManyToOne private Curort curort;
 

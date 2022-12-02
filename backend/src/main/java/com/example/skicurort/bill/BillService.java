@@ -20,21 +20,19 @@ public class BillService {
   private final ItemRepo itemRepo;
   private final UserRepository userRepository;
 
-  public BillDto save(UUID userId) {
+  public BillDto save(String name) {
     Bill bill = new Bill();
     bill.setCreationDate(new Date());
-    bill.setUser(userRepository.getReferenceById(userId));
+    bill.setUserName(name);
     billRepo.save(bill);
     return mapToDTO(Optional.of(bill));
   }
 
   public BigDecimal totalPriceById(Long billId) {
-
-    List<Item> itemList = itemRepo.findItemsByBillId(billId);
     BigDecimal totalPrice = new BigDecimal(0);
-    for (Item item : itemList) {
-      totalPrice = totalPrice.add(item.getTotalPrice());
-    }
+    List<Item> itemList = itemRepo.findItemsByBillId(billId);
+itemList.stream().map(item -> item.getUnitePrice().add(totalPrice));
+
     return totalPrice;
   }
 

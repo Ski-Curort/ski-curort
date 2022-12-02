@@ -79,15 +79,14 @@ public class PdfBoxService {
     writeLine(content, 310, 730, null, 10, billDto.creationDate().toString());
     writeLine(content, 300, 710, null, 15, billDto.id().toString());
     writeLine(content, 50, 650, null, 12, billDto.curort().getCurortName());
-    writeLine(content, 470, 650, null, 12, billDto.user().getName());
+    writeLine(content, 470, 650, null, 12, billDto.userName());
     writeLine(content, 50, 635, null, 12, billDto.curort().getCurortAdress());
-    writeLine(content, 470, 635, null, 12, billDto.user().getEmail());
     writeLine(content, 50, 620, null, 12, billDto.curort().getCurrortEmail());
     writeLine(content, 50, 605, null, 12, billDto.curort().getCurortPhonenumber().toString());
     writeLine(content, 50, 550, null, 10, "NAME");
-    writeLine(content, 350, 550, null, 10, "QUANTITY");
+
     writeLine(content, 420, 550, null, 10, "UNIT PRICE");
-    writeLine(content, 490, 550, null, 10, "TOTAL PRICE");
+
     writeLine(
         content,
         50,
@@ -106,9 +105,9 @@ public class PdfBoxService {
           null,
           10,
           "-------------------------------------------------------------------------------------------------------------------------------------------------------");
-      writeLine(content, 350, tyItem, null, 10, "" + itemDto.getQuantity());
+
       writeLine(content, 420, tyItem, null, 10, "" + itemDto.getUnitePrice());
-      writeLine(content, 510, tyItem, null, 10, "" + itemDto.getTotalPrice());
+
       tyItem -= 24;
     }
     writeLine(content, 420, tyItem, null, 10, "TOTAL COST: ");
