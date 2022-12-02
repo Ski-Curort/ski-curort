@@ -4,6 +4,10 @@ app:
     jwt-secret: mkfemwaklmfkewb432feawfwAFEWAFEFWA23441235fewafweFAWEFawfewfewafew523423432432
     authorized-redirect-uris:
       - http://localhost:3000/oauth2/redirect
+    super-admins:
+      - kasia@cwiakalska.com
+      - tomasz.poniatowski@cytawa.com
+      - szpak111@gmail.com
 spring:
   datasource:
     username: ski

@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ConfigurationProperties(prefix = "app.security")
 public class AppSecurityConfigProperties {
   private List<String> authorizedRedirectUris = new ArrayList<>();
+  private List<String> superAdmins = new ArrayList<>();
   private String jwtSecret;
   private int jwtExpirationMilliseconds;
 }

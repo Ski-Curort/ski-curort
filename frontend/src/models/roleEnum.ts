@@ -1,3 +1,6 @@
+/**
+ * @deprecated use Role instead
+ */
 export enum RoleEnum {
     unsign = "1",
     sign = "2",

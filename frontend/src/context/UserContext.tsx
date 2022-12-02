@@ -7,7 +7,7 @@ const defaultSettings: AppContextType = {
   userModifier: (user: User | null) => {},
 };
 
-export const AppContext = createContext<AppContextType>(defaultSettings);
+export const UserContext = createContext<AppContextType>(defaultSettings);
 
 export const AppContextProvider = ({ children }: React.PropsWithChildren) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -17,10 +17,10 @@ export const AppContextProvider = ({ children }: React.PropsWithChildren) => {
   };
 
   return (
-    <AppContext.Provider value={{ currentUser, userModifier }}>
+    <UserContext.Provider value={{ currentUser, userModifier }}>
       {children}
-    </AppContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export default AppContext;
+export default UserContext;

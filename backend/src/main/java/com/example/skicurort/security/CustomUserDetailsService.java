@@ -4,6 +4,7 @@ import com.example.skicurort.user.Role;
 import com.example.skicurort.user.User;
 import com.example.skicurort.user.UserRepository;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,8 @@ public class CustomUserDetailsService extends DefaultOAuth2UserService
     implements UserDetailsService {
 
   private final UserRepository userRepository;
+
+  private final AppSecurityConfigProperties appSecurityConfigProperties;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,10 +56,11 @@ public class CustomUserDetailsService extends DefaultOAuth2UserService
 
     User user =
         userRepository.save(
-            userRepository
-                .findByEmail(googleOAuth2UserInfo.getEmail())
-                .orElseGet(this::newUser)
-                .updateFromGoogle(googleOAuth2UserInfo));
+            makeAdminIfIsOnSuperAdminsList(
+                userRepository
+                    .findByEmail(googleOAuth2UserInfo.getEmail())
+                    .orElseGet(this::newUser)
+                    .updateFromGoogle(googleOAuth2UserInfo)));
     return new OAuthUserDetails(
         user.getName(),
         user.getUsername(),
@@ -65,9 +69,18 @@ public class CustomUserDetailsService extends DefaultOAuth2UserService
         oAuth2User.getAttributes());
   }
 
+  private User makeAdminIfIsOnSuperAdminsList(User user) {
+    if (appSecurityConfigProperties.getSuperAdmins().contains(user.getEmail())
+        && !user.getRoles().contains(Role.ADMIN)) {
+      user.getRoles().add(Role.ADMIN);
+    }
+    return user;
+  }
+
   private User newUser() {
     User user = new User();
-    user.setRoles(Set.of(Role.USER));
+    user.setRoles(new HashSet<>());
+    user.getRoles().add(Role.USER);
     user.setId(UUID.randomUUID());
     user.setPassword("");
     return user;
