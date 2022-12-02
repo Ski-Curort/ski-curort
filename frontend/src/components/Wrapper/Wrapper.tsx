@@ -3,7 +3,7 @@ import { useCallback, useEffect } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { UserApi } from "../../api/UserApi";
 import { ACCESS_TOKEN, GOOGLE_AUTH_URL } from "../../constants";
-import useAppContext from "../../hooks/useAppContext";
+import useUserContext from "../../hooks/useUserContext";
 import useAxios from "../../hooks/userAxios";
 import "./Wrapper.css";
 import Logo from "../../files/logo.svg";
@@ -11,17 +11,17 @@ import Person from "../../files/Vector (2).png";
 
 export const Wrapper = () => {
   const axios = useAxios();
-  const context = useAppContext();
+  const userContext = useUserContext();
   const navigate = useNavigate();
   const toast = useToast();
 
   const fetchUser = useCallback(async () => {
-    if (!localStorage.getItem(ACCESS_TOKEN) || context.currentUser) {
+    if (!localStorage.getItem(ACCESS_TOKEN) || userContext.currentUser) {
       return;
     }
     const user = await UserApi.getUser();
-    context.userModifier(user.data);
-  }, [context]);
+    userContext.userModifier(user.data);
+  }, [userContext]);
 
   useEffect(() => {
     fetchUser();
@@ -29,7 +29,7 @@ export const Wrapper = () => {
 
   const onLogout = () => {
     localStorage.removeItem(ACCESS_TOKEN);
-    context.userModifier(null);
+    userContext.userModifier(null);
 
     toast({
       title: "You've been successfully logged out",
@@ -59,7 +59,7 @@ export const Wrapper = () => {
           alignItems={"center"}
           justifyContent={"center"}
         >
-          {!context.currentUser ? (
+          {!userContext.currentUser ? (
             <Box
               display={"flex"}
               flexDirection={"row"}
@@ -83,7 +83,7 @@ export const Wrapper = () => {
                 <img alt={"Person Icon"} src={Person} width="16px" />
                 <p className={"person"}>
                   {" "}
-                  <Link to="/profile"> {context.currentUser.displayName}</Link>
+                  <Link to="/profile"> {userContext.currentUser.displayName}</Link>
                 </p>
               </Box>
               <button onClick={onLogout} className={"button"}>

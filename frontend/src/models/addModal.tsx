@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import {useContext} from "react";
 import {DataContext} from "../App";
-
+import { authorizedApi } from "../hooks/userAxios";
 
 export function AddMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -51,21 +51,16 @@ export function AddMenu() {
     };
 
     async function handleClic() {
-        await fetch(`http://localhost:8080/api/curort/`
-
-            , {
-                method: 'POST',
-                mode: 'cors',
-                headers: {'Content-Type': 'application/json',},
-                body: JSON.stringify(
-                    {
-                        "curortName": context.resortData.curortName,
-                        "curortAdress": context.resortData.curortAdress,
-                        "currortEmail": context.resortData.currortEmail,
-                        "curortPhonenumber": context.resortData.curortPhonenumber
-                    }
-                )
-            })
+        await authorizedApi({
+           method: "post",
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/`,
+            data: {
+                curortName: context.resortData.curortName,
+                curortAdress: context.resortData.curortAdress,
+                currortEmail: context.resortData.currortEmail,
+                curortPhonenumber: context.resortData.curortPhonenumber
+            }
+        });
         context.isChangeModifier(true)
         onClose();
     }

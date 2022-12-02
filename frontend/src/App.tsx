@@ -5,7 +5,7 @@ import { Wrapper } from "./components/Wrapper/Wrapper";
 import { StartPage } from "./components/StartPage";
 import { Cart } from "./components/Cart";
 import { Resort } from "./components/Resort";
-import { ChakraProvider, ListItem } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { ResortData } from "./models/resorts";
 import { UserData } from "./models/user";
 import { RoleEnum } from "./models/roleEnum";
@@ -13,7 +13,7 @@ import { Confirmation } from "./components/Confirmation";
 import { BillData } from "./models/bill";
 import { RedirectHandler } from "./components/RedirectHandler";
 import { Profile } from "./components/Profile/Profile";
-import { AppContextProvider } from "./context/AppContext";
+import { AppContextProvider } from "./context/UserContext";
 import { AdminPanel } from "./components/AdminPanel";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 

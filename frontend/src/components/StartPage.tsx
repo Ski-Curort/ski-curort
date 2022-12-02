@@ -3,15 +3,17 @@ import "./StartPage.css";
 import {useNavigate} from "react-router-dom";
 import {DataContext} from "../App";
 import {useContext, useEffect, useState} from "react";
-import {RoleEnum} from "../models/roleEnum";
 import Bin from "../files/Vector (1).png"
 import {EditMenu} from "../models/editModal";
+import useUserContext from "../hooks/useUserContext";
+import {Role} from "../models/user";
 import {AddMenu} from "../models/addModal";
 import {authorizedApi} from "../hooks/userAxios";
 
 
 
 export const StartPage = () => {
+    const userContext = useUserContext();
     const context = useContext(DataContext);
     const [resorts, setResorts] = useState([context.resortData]);
 
@@ -30,8 +32,10 @@ export const StartPage = () => {
     };
 
     function deleteResort(id: number) {
-
-        fetch(`http://localhost:8080/api/curort/${id}`, {method: 'DELETE'})
+        authorizedApi({
+            method: "DELETE",
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/${id}`
+        });
         context.isChangeModifier(true)
     }
 
@@ -48,7 +52,7 @@ export const StartPage = () => {
                                 <Box onClick={() => [navigate("../resort"),
                                     context.resortData = resort]}>{resort.curortName}
                                 </Box>
-                                {context.userData.userRole === RoleEnum.admin && (
+                                {userContext.currentUser?.roles.includes(Role.ADMIN) && (
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
                                         <EditMenu resortId={resort.id}></EditMenu>
@@ -56,8 +60,7 @@ export const StartPage = () => {
                             </Box>)
                     })}
                     <Box display={"flex"}
-                         flexDirection={"row-reverse"}>{context.userData.userRole === RoleEnum.admin && (
-                        <AddMenu></AddMenu>)}
+                         flexDirection={"row-reverse"}>{userContext.currentUser?.roles.includes(Role.ADMIN)  && (<AddMenu></AddMenu>)}
                     </Box>
                 </Stack>
             </Box>

@@ -9,6 +9,7 @@ public class EquipmentMapper {
     return new EquipmentDTO(
         equipment.getId(),
         equipment.getType(),
+        equipment.getSize(),
         equipment.getMark(),
         equipment.isAvailable(),
         equipment.getCost());
@@ -18,6 +19,7 @@ public class EquipmentMapper {
     Equipment equipment = new Equipment();
     equipment.setId(equipmentDTO.id());
     equipment.setType(equipmentDTO.type());
+    equipment.setSize(equipmentDTO.size());
     equipment.setMark(equipmentDTO.mark());
     equipment.setAvailable(equipmentDTO.available());
     equipment.setCost(equipmentDTO.cost());

@@ -7,10 +7,10 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
-import useAppContext from "../../hooks/useAppContext";
+import useUserContext from "../../hooks/useUserContext";
 
 export const Profile = () => {
-  const context = useAppContext();
+  const context = useUserContext();
 
   return (
     <>
