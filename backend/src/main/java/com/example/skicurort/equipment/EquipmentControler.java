@@ -59,6 +59,11 @@ public class EquipmentControler {
     return ResponseEntity.ok(equipmentDTO);
   }
 
+  @GetMapping("/{id}")
+  ResponseEntity<List<EquipmentDTO>> getAllEquipmentByCurortId(@PathVariable Long id) {
+    return ResponseEntity.ok(equipmentService.getByCurortId(id));
+  }
+
   @PutMapping("/update/{id}")
   ResponseEntity<EquipmentDTO> updateEquipment(
       @PathVariable Long id, @RequestBody EquipmentDTO equipmentDTO) {

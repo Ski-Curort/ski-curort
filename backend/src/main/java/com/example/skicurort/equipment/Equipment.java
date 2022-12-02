@@ -1,10 +1,12 @@
 package com.example.skicurort.equipment;
 
+import com.example.skicurort.curort.Curort;
 import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +29,5 @@ public class Equipment {
   private String mark;
   private boolean available;
   private BigDecimal cost;
+  @ManyToOne Curort curort;
 }
