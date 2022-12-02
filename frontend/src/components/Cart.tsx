@@ -111,16 +111,7 @@ equipments.splice(0,equipments.length);
                             <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.equipmentType}</Box>
                             <Box width='252px' paddingLeft='24px'>{equipment.brand}</Box>
                             <Box width='130px' paddingLeft='24px'>{equipment.totalPrice}</Box>
-                            <Box width='175px' paddingLeft='24px'><FormControl>
-
-                                <NumberInput max={10} min={1}>
-                                    <NumberInputField/>
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper/>
-                                        <NumberDecrementStepper/>
-                                    </NumberInputStepper>
-                                </NumberInput>
-                            </FormControl></Box>
+                            <Box width='175px' paddingLeft='24px'>{equipment.amount}</Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
                                 <img alt={"Bin"} src={Bin} onClick={()=>deleteItem(equipment.itemId)}/>
                             </Box>
