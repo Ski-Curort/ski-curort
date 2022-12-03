@@ -3,7 +3,6 @@ package com.example.skicurort.bill;
 import com.example.skicurort.exception.Error;
 import com.example.skicurort.exception.NoIdException;
 import java.math.BigDecimal;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

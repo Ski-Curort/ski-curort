@@ -8,9 +8,7 @@ public class ItemDto {
   private BigDecimal unitePrice;
   private Long idBill;
 
-
-  public ItemDto(
-      String itemName,  BigDecimal unitePrice, Long idBill ) {
+  public ItemDto(String itemName, BigDecimal unitePrice, Long idBill) {
     this.itemName = itemName;
     this.unitePrice = unitePrice;
     this.idBill = idBill;
@@ -25,10 +23,6 @@ public class ItemDto {
   public void setItemName(String itemName) {
     this.itemName = itemName;
   }
-
-
-
-
 
   public BigDecimal getUnitePrice() {
     return unitePrice;
@@ -45,8 +39,4 @@ public class ItemDto {
   public void setIdBill(Long idBill) {
     this.idBill = idBill;
   }
-
-
-
-
 }

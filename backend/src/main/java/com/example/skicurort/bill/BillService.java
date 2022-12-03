@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +30,7 @@ public class BillService {
   public BigDecimal totalPriceById(Long billId) {
     BigDecimal totalPrice = new BigDecimal(0);
     List<Item> itemList = itemRepo.findItemsByBillId(billId);
-itemList.stream().map(item -> item.getUnitePrice().add(totalPrice));
+    itemList.stream().map(item -> item.getUnitePrice().add(totalPrice));
 
     return totalPrice;
   }

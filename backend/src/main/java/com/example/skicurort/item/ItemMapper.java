@@ -1,19 +1,12 @@
 package com.example.skicurort.item;
 
 import com.example.skicurort.equipment.EquipmentDTO;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class ItemMapper {
 
   static ItemDto mapToDTO(Item item) {
-    return new ItemDto(
-        item.getItemName(),
-
-        item.getUnitePrice(),
-        item.bill.getId()
-    );
-
+    return new ItemDto(item.getItemName(), item.getUnitePrice(), item.bill.getId());
   }
 
   static Item mapEquipmentToItem(EquipmentDTO equipmentDto) {

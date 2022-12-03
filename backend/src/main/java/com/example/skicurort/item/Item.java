@@ -25,11 +25,8 @@ public class Item {
   @Column(name = "item_name")
   private String itemName;
 
-
   @Column(name = "unite_price")
   private BigDecimal unitePrice;
-
-
 
   @ManyToOne Bill bill;
 }
