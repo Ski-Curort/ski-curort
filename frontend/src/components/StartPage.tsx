@@ -9,6 +9,8 @@ import useUserContext from "../hooks/useUserContext";
 import {Role} from "../models/user";
 import {AddMenu} from "../models/addModal";
 import {authorizedApi} from "../hooks/userAxios";
+import {AxiosResponse} from "axios/index";
+import {ResortData} from "../models/resorts";
 
 
 
@@ -19,17 +21,15 @@ export const StartPage = () => {
 
 
     useEffect(() => {
-        getApiData()
+        authorizedApi({method: "GET",
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/`})
+            .then((res:AxiosResponse<[ResortData]>) => {
+                setResorts(res.data)
+                context.isChangeModifier(false);
+
+            });
     }, [context.isChanged]);
 
-    const getApiData = async () => {
-        const response = await fetch(
-            "http://localhost:8080/api/curort/"
-        ).then((response) => response.json());
-
-        setResorts(response);
-        context.isChangeModifier(false)
-    };
 
     function deleteResort(id: number) {
         authorizedApi({
