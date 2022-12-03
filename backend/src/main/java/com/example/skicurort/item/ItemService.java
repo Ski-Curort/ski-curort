@@ -20,7 +20,7 @@ public class ItemService {
   public ItemDto addItem(EquipmentDTO equipmentDto, Long billId) {
 
     Item item = mapEquipmentToItem(equipmentDto);
-    billRepo.findById(billId).get().getItemList().add(item);
+    item.setBill(billRepo.findById(billId).get());
     itemRepo.save(item);
     return mapToDTO(item);
   }

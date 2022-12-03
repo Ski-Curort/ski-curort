@@ -118,7 +118,7 @@ export function EditMenu(props: EditMenuProps) {
 
                     <ModalFooter>
                         <Button className={"button"} colorScheme='blue' mr={3}
-                                onClick={() => handleClic(context.resortData.id)}>
+                                onClick={() => handleClic(props.resortId)}>
                             Edit
                         </Button>
                         <Button className={"button"} onClick={onClose}>Cancel</Button>

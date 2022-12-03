@@ -28,7 +28,7 @@ public class BillController {
     return ResponseEntity.ok(billService.totalPriceById(billid));
   }
 
-  @PostMapping("/{userId}")
+  @PostMapping("/{name}")
   public ResponseEntity<BillDto> save(@PathVariable String name) throws NoIdException {
 
     return ResponseEntity.ok(billService.save(name));

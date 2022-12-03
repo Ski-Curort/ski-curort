@@ -9,9 +9,11 @@ import {
     ModalOverlay,
     useDisclosure
 } from "@chakra-ui/react";
+import { AxiosResponse } from "axios";
 import {useContext} from "react";
 import {DataContext} from "../App";
 import { authorizedApi } from "../hooks/userAxios";
+import {ResortData} from "./resorts";
 
 export function AddMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -51,20 +53,20 @@ export function AddMenu() {
     };
 
     async function handleClic() {
-        await authorizedApi({
-           method: "post",
-            url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/`,
-            data: {
-                curortName: context.resortData.curortName,
-                curortAdress: context.resortData.curortAdress,
-                currortEmail: context.resortData.currortEmail,
-                curortPhonenumber: context.resortData.curortPhonenumber
-            }
-        });
-        context.isChangeModifier(true)
-        onClose();
+        authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/curort/`, {
+            curortName: context.resortData.curortName,
+            curortAdress: context.resortData.curortAdress,
+            currortEmail: context.resortData.currortEmail,
+            curortPhonenumber: context.resortData.curortPhonenumber
+        })
+            .then((res:AxiosResponse<ResortData>) => {
+                context.isChangeModifier(true);
+                console.log("Got saved resort data");
+                console.log(res.data);
+                console.log("Resort name: "+ res.data.curortName);
+                onClose();
+            });
     }
-
     return (
         <>
 
