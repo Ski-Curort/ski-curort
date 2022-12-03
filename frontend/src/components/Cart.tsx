@@ -4,7 +4,7 @@ import {
 
 import {useNavigate} from "react-router-dom";
 import Bin from "../files/Vector (1).png";
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {DataContext} from "../App";
 import {authorizedApi} from "../hooks/userAxios";
 import UserContext from "../context/UserContext";
@@ -85,24 +85,24 @@ export const Cart = () => {
                     <Box width='908px'>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                              flexDirection={"row"} marginTop='12px' marginBottom='12px'>
-                            <Box width='210px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
+                            <Box width='230px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
                             <Box width='252px' paddingLeft='24px'>Brand</Box>
-                            <Box width='130px' paddingLeft='24px'>Cost</Box>
+                            <Box width='100px' paddingLeft='24px'>Size</Box>
+                            <Box width='160px' paddingLeft='24px'>Cost</Box>
                             <Box width='175px' paddingLeft='24px'>Amount</Box>
-                            <Box width='96px'></Box>
+
 
                         </Box>
                         {context.cartItemData.items.map((item) => {
                             return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                                          flexDirection={"row"} marginTop='12px' marginBottom='12px'
                                          key={item.id}>
-                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
+                                <Box width='230px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
                                 <Box width='252px' paddingLeft='24px'>{item.mark}</Box>
-                                <Box width='130px' paddingLeft='24px'>{item.cost}</Box>
-                                <Box width='175px' paddingLeft='24px'>1</Box>
-                                <Box width='96px' display={"flex"} justifyContent={"center"}>
+                                <Box width='100px' paddingLeft='24px'>{item.size}</Box>
+                                <Box width='160px' paddingLeft='24px'>{item.cost}</Box>
+                                <Box width='100px' paddingLeft='24px'>1</Box>
 
-                                </Box>
                             </Box>)
                         })}
                     </Box>

@@ -14,8 +14,6 @@ import {DataContext} from "../App";
 import { authorizedApi } from "../hooks/userAxios";
 import { AxiosResponse } from "axios";
 import { EquipmentData } from "../models/equipment";
-import {Simulate} from "react-dom/test-utils";
-import contextMenu = Simulate.contextMenu;
 export function AddEquipment() {
 
     const {isOpen, onOpen, onClose} = useDisclosure()

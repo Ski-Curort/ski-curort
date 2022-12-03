@@ -57,12 +57,19 @@ export const Confirmation = () => {
 
             <Box>
                 <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
-                    <p className={"summary"}>Confirmation:</p>
-                    <p>Bill NO. {context.billData.id}</p>
-                    <p> Date: {now} </p>
-                    <p>User name: {contextUser.currentUser?.displayName}</p>
-                    <p>User e-mail: {contextUser.currentUser?.email}</p>
-
+                   <Box> <p className={"summary"}>Confirmation:</p>
+                       <Box>
+                           <Box>
+                                <p>Bill NO. {context.billData.id}</p>
+                                <p> Date: {now} </p>
+                           </Box>
+                           <Box>
+                                 <p>User name: {contextUser.currentUser?.displayName}</p>
+                               <p>User e-mail: {contextUser.currentUser?.email}</p>
+                           </Box>
+                       </Box>
+                   </Box>
+                    <Box></Box>
                     <Box width='908px'>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                              flexDirection={"row"} marginTop='12px' marginBottom='12px'>

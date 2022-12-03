@@ -49,7 +49,7 @@ export const StartPage = () => {
                         return (
                             <Box className={"boxSelect"}
                                  justifyContent={"space-between"} key={resort.id}>
-                                <Box onClick={() => [navigate("../resort"),
+                                <Box onClick={() => [navigate("/resort"),
                                     context.resortData = resort]}>{resort.curortName}
                                 </Box>
                                 {userContext.currentUser?.roles.includes(Role.USER) && (
