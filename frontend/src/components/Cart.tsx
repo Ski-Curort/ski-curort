@@ -48,20 +48,15 @@ export const Cart  = () => {
 
 
     useEffect(() => {
-        getApiData()
-    },[]);
-    useEffect(() => {
-        setResort(context.resortData);
-    }, []);
-    const getApiData = async () => {
-        const response = await authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.displayName}`,
+        authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.displayName}`,
         ).then((res:AxiosResponse<BillData>)=>{
             setBill(res.data)
 
         })
+    },[]);
 
-    };
 
+context.billDataModifier(bill)
 
 
     function confirmBill() {
@@ -121,6 +116,7 @@ export const Cart  = () => {
                     </button>
                 </Box>
                 <Box>{bill.id}</Box>
+                <Box>{context.billData.id}</Box>
             </Box>
 
         </Box>)

@@ -1,20 +1,32 @@
 import {Box} from "@chakra-ui/react";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {DataContext} from "../App";
 import {useNavigate} from "react-router-dom";
 import UserContext from "../context/UserContext";
+import {authorizedApi} from "../hooks/userAxios";
+import {AxiosResponse} from "axios";
+import {ResortData} from "../models/resorts";
+import {BillData} from "../models/bill";
+import {Item} from "../models/item";
 
 
 export const Confirmation = () => {
     const context = useContext(DataContext);
     const contextUser=useContext(UserContext)
     const navigate = useNavigate()
-    function printBill(){
-        fetch(`http://localhost:8080/api/pdf/${context.billData.id}`,
-            {method: 'GET'})
-
+    const [items, setItem]=useState(context.billData.itemList)
+    function printBill(){authorizedApi.
+    get(`${process.env.REACT_APP_API_BASE_URL}/api/pdf/${context.billData.id}`)
 
     }
+
+    useEffect(() => {
+        authorizedApi({method: "GET",
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/item/${context.billData.id}`})
+            .then((res:AxiosResponse<[Item]>)=>{
+            setItem(res.data)
+        })
+    },[]);
     return (
         <Box>
 
@@ -36,7 +48,7 @@ export const Confirmation = () => {
                             <Box width='96px'></Box>
 
                         </Box>
-                        {context.billData.itemList.map((item) => {
+                        {items.map((item) => {
                             return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                                          flexDirection={"row"} marginTop='12px' marginBottom='12px' key={item.item.itemId}>
                                 <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.item.equipmentType}</Box>
