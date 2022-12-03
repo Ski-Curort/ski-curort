@@ -6,7 +6,7 @@ import com.example.skicurort.item.Item;
 import com.example.skicurort.item.ItemRepo;
 import com.example.skicurort.user.UserRepository;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class BillService {
 
   public BillDto save(String name) {
     Bill bill = new Bill();
-    bill.setCreationDate(new Date());
+    bill.setCreationDate(LocalDate.now().toString());
     bill.setUserName(name);
     billRepo.save(bill);
     return mapToDTO(Optional.of(bill));

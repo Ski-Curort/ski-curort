@@ -3,7 +3,6 @@ package com.example.skicurort.bill;
 import com.example.skicurort.curort.Curort;
 import com.example.skicurort.item.Item;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +25,7 @@ public class Bill {
   private BigDecimal totalCost;
 
   @Column(name = "creation_date")
-  private Date creationDate;
+  private String creationDate;
 
   private String userName;
 
