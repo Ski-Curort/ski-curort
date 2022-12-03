@@ -52,7 +52,7 @@ export const DataContext = createContext<DataContext>({
     resortDataModifier: (value: ResortData) => {},
     isChanged: false,
     isChangeModifier: (value: boolean) => {},
-    isChangedEquipment: true,
+    isChangedEquipment: false,
     isChangedEquipmentModifier: (value: boolean) => {},
     billData: {
         id: 0,
@@ -141,7 +141,7 @@ function App() {
     };
     const [isChangedEquipment, setIsChangedEquipment] = useState<boolean>(false);
     const isChangedEquipmentModifier = (value: boolean) => {
-        setIsChange(value);
+        setIsChangedEquipment(value);
     };
     const [billData, setBillData] = useState<BillData>({
         id: 0,
