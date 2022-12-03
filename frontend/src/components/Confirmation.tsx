@@ -4,13 +4,14 @@ import {DataContext} from "../App";
 import {useNavigate} from "react-router-dom";
 import UserContext from "../context/UserContext";
 
-
-export const Confirmation = () => {
+interface ConfirmationProps {
+    billtId: number,}
+export const Confirmation = (props: ConfirmationProps) => {
     const context = useContext(DataContext);
     const contextUser=useContext(UserContext)
     const navigate = useNavigate()
     function printBill(){
-        fetch(`http://localhost:8080/api/pdf/${context.billData.id}`,
+        fetch(`http://localhost:8080/api/pdf/${props.billtId}`,
             {method: 'GET'})
 
 
@@ -21,7 +22,7 @@ export const Confirmation = () => {
             <Box>
                 <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
                     <p className={"summary"}>Confirmation:</p>
-                    <p>Bill NO. {context.billData.id}</p>
+                    <p>Bill NO. {props.billtId}</p>
                     <p>Date  {context.billData.creationData}</p>
                     <p>User name: {contextUser.currentUser?.displayName}</p>
                     <p>User e-mail: {contextUser.currentUser?.email}</p>

@@ -12,7 +12,7 @@ import {AxiosResponse} from "axios";
 import {ResortData} from "../models/resorts";
 import {BillData} from "../models/bill";
 
-export const Cart = () => {
+export const Cart  = () => {
 
     const equipments = [{
         itemId: 1,
@@ -46,6 +46,7 @@ export const Cart = () => {
     const [resort, setResort] = useState(context.billData.curort)
     const contextUser=useContext(UserContext)
 
+
     useEffect(() => {
         getApiData()
     },[]);
@@ -56,6 +57,7 @@ export const Cart = () => {
         const response = await authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.displayName}`,
         ).then((res:AxiosResponse<BillData>)=>{
             setBill(res.data)
+
         })
 
     };
