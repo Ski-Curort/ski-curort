@@ -8,6 +8,9 @@ import {useContext, useEffect, useState} from "react";
 import {DataContext} from "../App";
 import {authorizedApi} from "../hooks/userAxios";
 import UserContext from "../context/UserContext";
+import {AxiosResponse} from "axios";
+import {ResortData} from "../models/resorts";
+import {BillData} from "../models/bill";
 
 export const Cart = () => {
 
@@ -45,34 +48,31 @@ export const Cart = () => {
 
     useEffect(() => {
         getApiData()
-    });
+    },[]);
     useEffect(() => {
         setResort(context.resortData);
-    }, [context.resortData]);
+    }, []);
     const getApiData = async () => {
-        const response = await authorizedApi({
-            method: 'post',
-            url: `${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.username}`,
-        }).then((response) => response.data);
-        setBill(response)
+        const response = await authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.displayName}`,
+        ).then((res:AxiosResponse<BillData>)=>{
+            setBill(res.data)
+        })
+
     };
+
+
 
     function confirmBill() {
         equipments.forEach((equipment) => {
-            fetch(`http://localhost:8080/api/item/${bill.id}/${2}`,
 
+             authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/item/${bill.id}`,
                 {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(
-                        {
-                            "id": equipment.itemId,
-                            "type": equipment.equipmentType,
-                            "mark": equipment.brand,
-                            "cost": equipment.totalPrice
-                        })
-                })
+                "id": equipment.itemId,
+                    "type": equipment.equipmentType,
+                    "mark": equipment.brand,
+                    "cost": equipment.totalPrice
+            });
+
         })
     }
 
