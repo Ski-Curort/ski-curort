@@ -1,4 +1,4 @@
-import {Box} from "@chakra-ui/react";
+import {Box, Button} from "@chakra-ui/react";
 import {useContext} from "react";
 import {DataContext} from "../App";
 import {useNavigate} from "react-router-dom";
@@ -46,6 +46,12 @@ export const Confirmation = () => {
     }
 
     const now = new Date().toDateString();
+
+    const totalPrice=function () {
+        return(context.cartItemData.items.reduce((sum, current) => sum + current.cost, 0))
+
+    }
+
     return (
         <Box>
 
@@ -67,20 +73,22 @@ export const Confirmation = () => {
 
 
                         </Box>
-                        {equipments.map((item) => {
+                        {context.cartItemData.items.map((item) => {
                             return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
-                                         flexDirection={"row"} marginTop='12px' marginBottom='12px' key={item.itemId}>
-                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.equipmentType}</Box>
-                                <Box width='252px' paddingLeft='24px'>{item.brand}</Box>
-                                <Box width='130px' paddingLeft='24px'>{item.totalPrice}</Box>
-                                <Box width='175px' paddingLeft='24px'>{item.amount}</Box>    </Box>)
+                                         flexDirection={"row"} marginTop='12px' marginBottom='12px' key={item.id}>
+                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
+                                <Box width='252px' paddingLeft='24px'>{item.mark}</Box>
+                                <Box width='130px' paddingLeft='24px'>{item.cost}</Box>
+                                <Box width='175px' paddingLeft='24px'>1</Box>    </Box>)
                         })}
+                        <p>{totalPrice()}</p>
                     </Box>
                     <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
                          marginTop='20px'>
                         <Box onClick={() => navigate('/cart')} display={"flex"} flexDirection={"row"} width='200px'>
                             <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
                         <button className={"buttonAdd"} onClick={() => printBill()}>Print Order</button>
+
                     </Box>
                 </Box>
             </Box>)

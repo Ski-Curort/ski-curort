@@ -60,7 +60,7 @@ export function AddMenu() {
             curortPhonenumber: context.resortData.curortPhonenumber
         })
             .then((res:AxiosResponse<ResortData>) => {
-                context.isChangeModifier(true);
+                context.isChangeModifier(true)
                 console.log("Got saved resort data");
                 console.log(res.data);
                 console.log("Resort name: "+ res.data.curortName);
