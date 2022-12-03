@@ -18,6 +18,7 @@ import {AdminPanel} from "./components/AdminPanel";
 import {ProtectedRoute} from "./components/ProtectedRoute";
 import {CartData} from "./models/itemsCartData";
 import {EquipmentData} from "./models/equipment";
+import { WeatherData } from './models/weather';
 
 interface DataContext {
     resortData: ResortData;
@@ -34,6 +35,8 @@ interface DataContext {
     equipmentDataModifier: (value: EquipmentData) => void;
     isChangedEquipment: boolean;
     isChangedEquipmentModifier: (value: boolean) => void;
+    weatherData : WeatherData
+    weatherDataModifier: (value : WeatherData) => void;
 }
 
 export const DataContext = createContext<DataContext>({
@@ -100,6 +103,16 @@ export const DataContext = createContext<DataContext>({
     },
     equipmentDataModifier: (value: EquipmentData) => {
     },
+    weatherData: {
+        id:0,
+        cityName:"",
+        temp: 0,
+        pressure: 0,
+        humidity:0,
+        windSpeed:0,
+        windDeg:0,
+        },
+      weatherDataModifier: (value : WeatherData) => {},
 });
 
 function App() {
@@ -180,7 +193,16 @@ function App() {
 
         })
     const cartDataModifier = (value: CartData) => setCartData(value);
-
+    const[weatherData,setWeatherData]=useState<WeatherData>({
+        id:0,
+        cityName:"",
+        temp: 0,
+        pressure: 0,
+        humidity:0,
+        windSpeed:0,
+        windDeg:0,
+      })
+      const weatherDataModifier = (value : WeatherData) => {setWeatherData(value);};
     return (
         <AppContextProvider>
             <DataContext.Provider
@@ -197,7 +219,8 @@ function App() {
                     cartItemModifier: cartDataModifier,
                     equipmentData: equipmentData,
                     equipmentDataModifier: equipmentDataModifier,
-
+                    weatherData: weatherData,
+                    weatherDataModifier: weatherDataModifier,
                     isChangedEquipment: isChangedEquipment,
                     isChangedEquipmentModifier: isChangedEquipmentModifier,
                 }}
