@@ -1,5 +1,5 @@
 import {
-    Box,
+    Box, Button,
 } from "@chakra-ui/react";
 
 import {useNavigate} from "react-router-dom";
@@ -57,14 +57,14 @@ export const Cart = () => {
     }, []);
 
     function confirmBill() {
-        equipments.forEach((equipment) => {
+        context.cartItemData.items.forEach((item) => {
 
             authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/item/${bill.id}`,
                 {
-                    "id": equipment.itemId,
-                    "type": equipment.equipmentType,
-                    "mark": equipment.brand,
-                    "cost": equipment.totalPrice
+                    "id": item.id,
+                    "type": item.type,
+                    "mark": item.mark,
+                    "cost": item.cost
                 }).then(()=>navigate("/confirmation"));
 
         })}
@@ -92,16 +92,16 @@ export const Cart = () => {
                             <Box width='96px'></Box>
 
                         </Box>
-                        {equipments.map((equipment) => {
+                        {context.cartItemData.items.map((item) => {
                             return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                                          flexDirection={"row"} marginTop='12px' marginBottom='12px'
-                                         key={equipment.itemId}>
-                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.equipmentType}</Box>
-                                <Box width='252px' paddingLeft='24px'>{equipment.brand}</Box>
-                                <Box width='130px' paddingLeft='24px'>{equipment.totalPrice}</Box>
-                                <Box width='175px' paddingLeft='24px'>{equipment.amount}</Box>
+                                         key={item.id}>
+                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
+                                <Box width='252px' paddingLeft='24px'>{item.mark}</Box>
+                                <Box width='130px' paddingLeft='24px'>{item.cost}</Box>
+                                <Box width='175px' paddingLeft='24px'>1</Box>
                                 <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                    <img alt={"Bin"} src={Bin} onClick={() => deleteItem(equipment.itemId)}/>
+
                                 </Box>
                             </Box>)
                         })}

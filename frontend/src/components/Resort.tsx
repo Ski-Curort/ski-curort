@@ -39,11 +39,8 @@ function addToCart(a:EquipmentData){
 
 
 }
-
+    const navigate = useNavigate()
     return ( <Stack>
-
-
-
 
 
             <Box display = {"flex"} alignContent = {"center"} justifyContent={"center"}>
@@ -76,6 +73,7 @@ function addToCart(a:EquipmentData){
                     </Tbody>
                 </Table>
                 <AddEquipment></AddEquipment>
+                <Button onClick={()=>navigate("/confirmation")}>Proceed to Order</Button>
             </Box>
         </Stack>
     )
