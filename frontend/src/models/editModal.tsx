@@ -12,10 +12,12 @@ import {
 import Edit from "../files/Vector.png";
 import React, {useContext} from "react";
 import {DataContext} from "../App";
+import {authorizedApi} from "../hooks/userAxios";
 
-interface EditMenuProps{
-    resortId:number
+interface EditMenuProps {
+    resortId: number
 }
+
 export function EditMenu(props: EditMenuProps) {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -56,21 +58,18 @@ export function EditMenu(props: EditMenuProps) {
 
 
     async function handleClic(id: number) {
-        await fetch(`http://localhost:8080/api/curort/${props.resortId}`
+        await authorizedApi({
+            method: 'put',
+            url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/${id}`,
+            data:
+                {
+                    "curortName": context.resortData.curortName,
+                    "curortAdress": context.resortData.curortAdress,
+                    "currortEmail": context.resortData.currortEmail,
+                    "curortPhonenumber": context.resortData.curortPhonenumber
+                }
 
-            , {
-                method: 'PUT',
-                mode: 'cors',
-                headers: {'Content-Type': 'application/json',},
-                body: JSON.stringify(
-                    {
-                        "curortName": context.resortData.curortName,
-                        "curortAdress": context.resortData.curortAdress,
-                        "currortEmail": context.resortData.currortEmail,
-                        "curortPhonenumber": context.resortData.curortPhonenumber
-                    }
-                )
-            })
+        })
         context.isChangeModifier(true)
         onClose()
 

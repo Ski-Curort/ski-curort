@@ -11,10 +11,21 @@ export const Resort = () => {
     const navigate = useNavigate()
     return (<Box>
             <Box>
+
+            </Box>
+
+
+
+            <Box>
                 {context.resortData.id}
                 <Button className={"signButton"} onClick={() => navigate("/cart")}>CART</Button>
 
             </Box>
+
+
+
+
+
         </Box>
 
     )

@@ -25,14 +25,8 @@ public class Item {
   @Column(name = "item_name")
   private String itemName;
 
-  @Column(name = "quantity")
-  private Long quantity;
-
   @Column(name = "unite_price")
   private BigDecimal unitePrice;
-
-  @Column(name = "total_price")
-  private BigDecimal totalPrice;
 
   @ManyToOne Bill bill;
 }
