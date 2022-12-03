@@ -34,8 +34,6 @@ interface DataContext {
     equipmentDataModifier: (value: EquipmentData) => void;
     isChangedEquipment: boolean;
     isChangedEquipmentModifier: (value: boolean) => void;
-
-
 }
 
 export const DataContext = createContext<DataContext>({

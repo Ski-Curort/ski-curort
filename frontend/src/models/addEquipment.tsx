@@ -14,6 +14,8 @@ import {DataContext} from "../App";
 import { authorizedApi } from "../hooks/userAxios";
 import { AxiosResponse } from "axios";
 import { EquipmentData } from "../models/equipment";
+import {Simulate} from "react-dom/test-utils";
+import contextMenu = Simulate.contextMenu;
 export function AddEquipment() {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -73,8 +75,8 @@ export function AddEquipment() {
                 console.log("Got saved resort data");
                 console.log(res.data);
                 console.log("Equipment name: "+ res.data.type);
+                console.log("is changed equipment flag: " + context.isChangedEquipment)
                 onClose();
-
             });
     }
 

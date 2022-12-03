@@ -20,10 +20,11 @@ export const Resort = () => {
 const [equipments, setEquipments]=useState([context.equipmentData])
 
     useEffect(()=> {
+        console.log("About to refresh equipments list")
         authorizedApi.get(`http://localhost:8080/api/equipment/all`).then((res:AxiosResponse<EquipmentData[]>) => {
             setEquipments(res.data)
             console.log("recive")
-            context.equipmentDataModifier(equipments)
+            //context.equipmentDataModifier(equipments)
             context.isChangedEquipmentModifier(false)
             console.log(res.data)
 
