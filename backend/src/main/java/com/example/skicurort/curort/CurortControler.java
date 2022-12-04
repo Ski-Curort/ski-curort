@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,8 +33,8 @@ public class CurortControler {
   }
 
   @PostMapping("/")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<CurortDTO> save(@RequestBody CurortDTO curortDto) {
-
     return ResponseEntity.ok(curortService.save(curortDto));
   }
 
@@ -43,12 +44,14 @@ public class CurortControler {
   }
 
   @PutMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public ResponseEntity<CurortDTO> updateDto(
       @RequestBody CurortDTO curortDTO, @PathVariable Long id) {
     return ResponseEntity.ok(curortService.updateDto(curortDTO, id));
   }
 
   @DeleteMapping("/{id}")
+  @PreAuthorize("hasRole('ADMIN')")
   public HttpStatus delete(@PathVariable Long id) throws NoIdException {
 
     curortService.delete(id);
