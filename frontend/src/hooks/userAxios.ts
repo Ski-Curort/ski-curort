@@ -6,6 +6,14 @@ export const authorizedApi = axios.create();
 export const useAxios = () => {
 
   authorizedApi.interceptors.request.use((config: AxiosRequestConfig) => {
+
+    if(localStorage.getItem(ACCESS_TOKEN)===null){
+      return {
+        ...config,
+        baseURL: process.env.REACT_APP_API_BASE_URL,
+      };
+    }
+
     return {
       ...config,
       headers: {
