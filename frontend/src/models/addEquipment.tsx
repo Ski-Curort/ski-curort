@@ -16,8 +16,10 @@ import { AxiosResponse } from "axios";
 import { EquipmentData } from "../models/equipment";
 import {Simulate} from "react-dom/test-utils";
 import contextMenu = Simulate.contextMenu;
+import useUserContext from "../hooks/useUserContext";
+import {Role} from "./user";
 export function AddEquipment() {
-
+    const userContext = useUserContext();
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
     const onEquipmentTypeChanged = (
@@ -82,7 +84,9 @@ export function AddEquipment() {
 
     return (
         <>
-            <button className={"buttonAdd"} onClick={onOpen}>+ Add New</button>
+            {userContext.currentUser?.roles.includes(Role.ADMIN) && (
+                <button className={"buttonAdd"} onClick={onOpen}>+ Add New</button>)}
+
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}
