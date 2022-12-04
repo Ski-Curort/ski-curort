@@ -9,32 +9,7 @@ import {authorizedApi} from "../hooks/userAxios";
 
 export const Confirmation = () => {
 
-    const equipments = [{
 
-        itemId: 1,
-        equipmentType: "Ski",
-        brand: "gf",
-        totalPrice: 11,
-        amount: 0,
-    }, {
-        itemId: 2,
-        equipmentType: "google",
-        brand: "sdf",
-        totalPrice: 22,
-        amount: 0,
-    }, {
-        itemId: 3,
-        equipmentType: "snowboard",
-        brand: "gdf",
-        totalPrice: 33,
-        amount: 0,
-    }, {
-        itemId: 4,
-        equipmentType: "sank",
-        brand: "fdg",
-        totalPrice: 44,
-        amount: 0,
-    }]
 
 
     const context = useContext(DataContext);
@@ -57,12 +32,19 @@ export const Confirmation = () => {
 
             <Box>
                 <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
-                    <p className={"summary"}>Confirmation:</p>
-                    <p>Bill NO. {context.billData.id}</p>
-                    <p> Date: {now} </p>
-                    <p>User name: {contextUser.currentUser?.displayName}</p>
-                    <p>User e-mail: {contextUser.currentUser?.email}</p>
-
+                    <Box> <p className={"summary"}>Confirmation:</p>
+                        <Box>
+                            <Box>
+                                <p>Bill NO. {context.billData.id}</p>
+                                <p> Date: {now} </p>
+                            </Box>
+                            <Box>
+                                <p>User name: {contextUser.currentUser?.displayName}</p>
+                                <p>User e-mail: {contextUser.currentUser?.email}</p>
+                            </Box>
+                        </Box>
+                    </Box>
+                    <Box></Box>
                     <Box width='908px'>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                              flexDirection={"row"} marginTop='12px' marginBottom='12px'>
@@ -81,16 +63,21 @@ export const Confirmation = () => {
                                 <Box width='130px' paddingLeft='24px'>{item.cost}</Box>
                                 <Box width='175px' paddingLeft='24px'>1</Box>    </Box>)
                         })}
-                        <p>{totalPrice()}</p>
-                    </Box>
+                    </Box><Box width='908px' display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}
+                               marginTop='20px'><Box className={"summaryBar"} fontSize={'24px'} marginTop={'25px'}>
+                    TOTAL COST {totalPrice()}
+                </Box></Box>
                     <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
                          marginTop='20px'>
                         <Box onClick={() => navigate('/cart')} display={"flex"} flexDirection={"row"} width='200px'>
                             <Box className={"backToShop"} marginLeft='14px' width='144px' height='40px'> Back to Shop </Box></Box>
-                        <button className={"buttonAdd"} onClick={() => printBill()}>Print Order</button>
+                        <button className={"buttonAdd"} onClick={() =>navigate("/")}>Change Resort</button>
 
                     </Box>
+
                 </Box>
+
             </Box>)
+
         </Box>)
 }
