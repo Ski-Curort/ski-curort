@@ -1,4 +1,5 @@
 import {
+    Box,
     Button,
     FormControl, FormLabel, Input,
     Modal,
@@ -14,10 +15,15 @@ import {useContext} from "react";
 import {DataContext} from "../App";
 import { authorizedApi } from "../hooks/userAxios";
 import {ResortData} from "./resorts";
+import {Role} from "./user";
+import {EditMenu} from "./editModal";
+import Bin from "../files/Vector (1).png";
+import useUserContext from "../hooks/useUserContext";
 
 export function AddMenu() {
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
+    const userContext = useUserContext();
 
     const onResortNameChanged = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -70,7 +76,9 @@ export function AddMenu() {
     return (
         <>
 
-            <button className={"buttonAdd"} onClick={onOpen}>+ Add Resort</button>
+            {userContext.currentUser?.roles.includes(Role.ADMIN) && (
+                <button className={"buttonAdd"} onClick={onOpen}>+ Add Resort</button>)}
+
 
             <Modal
 

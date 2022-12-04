@@ -82,7 +82,7 @@ export function AddEquipment() {
 
     return (
         <>
-            <button className={"buttonAdd"} onClick={onOpen}>+ Add New</button>
+            <button className={"buttonAdd"} onClick={onOpen}>+ Add New Equipment</button>
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}

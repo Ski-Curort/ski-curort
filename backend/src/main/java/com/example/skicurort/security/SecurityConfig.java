@@ -53,7 +53,7 @@ public class SecurityConfig {
       AuthenticationEntryPoint authenticationEntryPoint,
       JwtAuthenticationFilter jwtFilter)
       throws Exception {
-
+    allowH2Console(http);
     http.cors()
         .disable()
         .csrf()
@@ -90,6 +90,16 @@ public class SecurityConfig {
         .failureHandler(oAuth2AuthenticationFailureHandler);
 
     return http.build();
+  }
+
+  private static void allowH2Console(HttpSecurity http) throws Exception {
+    http.headers()
+        .frameOptions()
+        .disable()
+        .and()
+        .authorizeRequests()
+        .antMatchers("/h2-console/**")
+        .permitAll();
   }
 
   @Bean
