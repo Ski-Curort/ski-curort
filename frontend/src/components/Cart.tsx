@@ -27,6 +27,7 @@ export const Cart = () => {
         authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/bill/${contextUser.currentUser?.displayName}`,
         ).then((res: AxiosResponse<BillData>) => {
             setBill(res.data)
+            context.cartItemData.items.splice(0,1)
 
         })
     }, []);
