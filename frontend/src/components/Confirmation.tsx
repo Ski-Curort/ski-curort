@@ -49,20 +49,20 @@ export const Confirmation = () => {
                     <Box width='908px'>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                              flexDirection={"row"} marginTop='12px' marginBottom='12px'>
-                            <Box width='210px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
-                            <Box width='252px' paddingLeft='24px'>Brand</Box>
-                            <Box width='130px' paddingLeft='24px'>Cost</Box>
-                            <Box width='175px' paddingLeft='24px'>Amount</Box>
+                            <Box width='280px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
+                            <Box width='290px' paddingLeft='24px'>Brand</Box>
+                            <Box width='150px' paddingLeft='24px'>Cost</Box>
+                            <Box width='100px' paddingLeft='24px'>Amount</Box>
 
 
                         </Box>
                         {context.cartItemData.items.map((item) => {
                             return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                                          flexDirection={"row"} marginTop='12px' marginBottom='12px' key={item.id}>
-                                <Box width='210px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
-                                <Box width='252px' paddingLeft='24px'>{item.mark}</Box>
-                                <Box width='130px' paddingLeft='24px'>{item.cost}</Box>
-                                <Box width='175px' paddingLeft='24px'>1</Box>    </Box>)
+                                <Box width='280px' marginLeft='16px' paddingLeft='24px'>{item.type}</Box>
+                                <Box width='290px' paddingLeft='24px'>{item.mark}</Box>
+                                <Box width='150px' paddingLeft='24px'>{item.cost}</Box>
+                                <Box width='100px' paddingLeft='24px'>1</Box>    </Box>)
                         })}
                     </Box><Box width='908px' display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}
                                marginTop='20px'><Box className={"summaryBar"} fontSize={'24px'} marginTop={'25px'}>

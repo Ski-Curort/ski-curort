@@ -86,7 +86,6 @@ export function AddEquipment() {
         <>
             {userContext.currentUser?.roles.includes(Role.ADMIN) && (
                 <button className={"buttonAdd"} onClick={onOpen}>+ Add New</button>)}
-
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}

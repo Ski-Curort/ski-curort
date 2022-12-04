@@ -10,10 +10,13 @@ import {EquipmentData} from "../models/equipment";
 import Bin from "../files/Vector (1).png";
 import Cart from "../files/Vector (4).png"
 import { WeatherData } from "../models/weather";
+import {Role} from "../models/user";
+import useUserContext from "../hooks/useUserContext";
+
 
 
 export const Resort = () => {
-
+    const userContext = useUserContext();
     const context = useContext(DataContext);
     const[cartItems, setCartItems]=useState(context.cartItemData.items)
     const [equipments, setEquipments]=useState([context.equipmentData])
@@ -53,78 +56,79 @@ export const Resort = () => {
             method: "DELETE",
             url: `${process.env.REACT_APP_API_BASE_URL}/api/equipment/delete/${id}`
         });
-        context.isChangeModifier(true)
+        context.isChangedEquipmentModifier(true)
     }
     const navigate = useNavigate()
 
-            return (
-                    <Box><Table size = 'sm'>
-                        <Thead>
-                            <Tr>
-                                <Th scope = "col">City</Th>
-                                <Th scope = "col">Temperature</Th>
-                                <Th scope = "col">Pressure</Th>
-                                <Th scope = "col">Humidity</Th>
-                                <Th scope = "col">Wind velocity</Th>
-                                <Th scope = "col">Wind degree</Th>
-                            </Tr>
-                        </Thead>
+    return (
+        <Box><Table size = 'sm'>
+            <Thead>
+                <Tr>
+                    <Th scope = "col">City</Th>
+                    <Th scope = "col">Temperature</Th>
+                    <Th scope = "col">Pressure</Th>
+                    <Th scope = "col">Humidity</Th>
+                    <Th scope = "col">Wind velocity</Th>
+                    <Th scope = "col">Wind degree</Th>
+                </Tr>
+            </Thead>
 
-                        <Tbody>
-                            <Tr>
-                                <Td>{weather.cityName}</Td>
-                                <Td>{weather.temp} C</Td>
-                                <Td>{weather.pressure} hPa</Td>
-                                <Td>{weather.humidity} %</Td>
-                                <Td>{weather.windSpeed} m/s</Td>
-                                <Td>{weather.windDeg} </Td>
-                            </Tr>
-                        </Tbody>
-                    </Table>
+            <Tbody>
+                <Tr>
+                    <Td>{weather.cityName}</Td>
+                    <Td>{weather.temp} C</Td>
+                    <Td>{weather.pressure} hPa</Td>
+                    <Td>{weather.humidity} %</Td>
+                    <Td>{weather.windSpeed} m/s</Td>
+                    <Td>{weather.windDeg} </Td>
+                </Tr>
+            </Tbody>
+        </Table>
 
-        <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
-            <p className={"summary"}>{context.resortData.curortName}</p>
+            <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
+                <p className={"summary"}>{context.resortData.curortName}</p>
 
-            <Box width='908px'>
-                <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
-                     flexDirection={"row"} marginTop='12px' marginBottom='12px'>
-                    <Box width='210px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
-                    <Box width='252px' paddingLeft='24px'>Brand</Box>
-                    <Box width='100px' paddingLeft='24px'>Size</Box>
-                    <Box width='130px' paddingLeft='24px'>Cost</Box>
-                    <Box width='175px' paddingLeft='24px'>Amount</Box>
-                    <Box width='96px'></Box>
+                <Box width='908px'>
+                    <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
+                         flexDirection={"row"} marginTop='12px' marginBottom='12px'>
+                        <Box width='210px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>
+                        <Box width='252px' paddingLeft='24px'>Brand</Box>
+                        <Box width='100px' paddingLeft='24px'>Size</Box>
+                        <Box width='130px' paddingLeft='24px'>Cost</Box>
+                        <Box width='175px' paddingLeft='24px'>Amount</Box>
+                        <Box width='96px'></Box>
 
+                    </Box>
+                    {equipments.map((equipment) => {
+                        return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
+                                     flexDirection={"row"} marginTop='12px' marginBottom='12px'
+                                     key={equipment.id}>
+                            <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.type}</Box>
+                            <Box width='252px' paddingLeft='24px'>{equipment.mark}</Box>
+                            <Box width='100px' paddingLeft='24px'>{equipment.size}</Box>
+                            <Box width='130px' paddingLeft='24px'>{equipment.cost}</Box>
+                            <Box width='175px' paddingLeft='24px'>1</Box>
+                            <Box width='96px' display={"flex"} justifyContent={"center"}>
+                                {userContext.currentUser?.roles.includes(Role.ADMIN)  &&
+                                    (<img alt={"Bin"} src={Bin} onClick={() => deleteEquipment(equipment.id)}/>)}
+                                <Box width={'30px'}></Box>
+                                <img alt={"Cart"} src={Cart} onClick={() => addToCart(equipment)}/>
+                            </Box>
+                        </Box>)
+                    })}
                 </Box>
-                {equipments.map((equipment) => {
-                    return (<Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
-                                 flexDirection={"row"} marginTop='12px' marginBottom='12px'
-                                 key={equipment.id}>
-                        <Box width='210px' marginLeft='16px' paddingLeft='24px'>{equipment.type}</Box>
-                        <Box width='252px' paddingLeft='24px'>{equipment.mark}</Box>
-                        <Box width='100px' paddingLeft='24px'>{equipment.size}</Box>
-                        <Box width='130px' paddingLeft='24px'>{equipment.cost}</Box>
-                        <Box width='175px' paddingLeft='24px'>1</Box>
-                        <Box width='96px' display={"flex"} justifyContent={"center"}>
-                            <img alt={"Bin"} src={Bin} onClick={() => deleteEquipment(equipment.id)}/>
-                            <Box width={'30px'}></Box>
-                            <img alt={"Cart"} src={Cart} onClick={() => addToCart(equipment)}/>
-                        </Box>
-                    </Box>)
-                })}
-            </Box>
-            <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
-                 marginTop='20px'>
-                <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
-                    <AddEquipment/></Box>
-                <button className={"buttonAdd"} onClick={()=>navigate("/cart")}>Proceed
-                </button>
-
-            </Box>
-
-            </Box>
+                <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
+                     marginTop='20px'>
+                    <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
+                        {userContext.currentUser?.roles.includes(Role.ADMIN)  && (<AddEquipment/>)}</Box>
+                    <button className={"buttonAdd"} onClick={()=>navigate("/cart")}>Proceed
+                    </button>
 
                 </Box>
 
-)
+            </Box>
+
+        </Box>
+
+    )
 }
