@@ -60,7 +60,7 @@ export const StartPage = () => {
                             </Box>)
                     })}
                     <Box display={"flex"}
-                         flexDirection={"row-reverse"}>{userContext.currentUser?.roles.includes(Role.USER)  && (<AddMenu></AddMenu>)}
+                         flexDirection={"row-reverse"}>{userContext.currentUser?.roles.includes(Role.ADMIN)  && (<AddMenu></AddMenu>)}
                     </Box>
                 </Stack>
             </Box>
