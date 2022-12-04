@@ -10,10 +10,13 @@ import {EquipmentData} from "../models/equipment";
 import Bin from "../files/Vector (1).png";
 import Cart from "../files/Vector (4).png"
 import { WeatherData } from "../models/weather";
+import {Role} from "../models/user";
+import useUserContext from "../hooks/useUserContext";
+
 
 
 export const Resort = () => {
-
+    const userContext = useUserContext();
     const context = useContext(DataContext);
     const[cartItems, setCartItems]=useState(context.cartItemData.items)
     const [equipments, setEquipments]=useState([context.equipmentData])
@@ -106,7 +109,8 @@ export const Resort = () => {
                             <Box width='130px' paddingLeft='24px'>{equipment.cost}</Box>
                             <Box width='175px' paddingLeft='24px'>1</Box>
                             <Box width='96px' display={"flex"} justifyContent={"center"}>
-                                <img alt={"Bin"} src={Bin} onClick={() => deleteEquipment(equipment.id)}/>
+                                {userContext.currentUser?.roles.includes(Role.ADMIN)  &&
+                                    (<img alt={"Bin"} src={Bin} onClick={() => deleteEquipment(equipment.id)}/>)}
                                 <Box width={'30px'}></Box>
                                 <img alt={"Cart"} src={Cart} onClick={() => addToCart(equipment)}/>
                             </Box>
@@ -116,7 +120,7 @@ export const Resort = () => {
                 <Box width='908px' display={"flex"} flexDirection={"row"} justifyContent={"space-between"}
                      marginTop='20px'>
                     <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
-                        <AddEquipment/></Box>
+                        {userContext.currentUser?.roles.includes(Role.ADMIN)  && (<AddEquipment/>)}</Box>
                     <button className={"buttonAdd"} onClick={()=>navigate("/cart")}>Proceed
                     </button>
 
