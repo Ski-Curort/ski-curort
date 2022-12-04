@@ -56,7 +56,8 @@ export const StartPage = () => {
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
                                         <EditMenu resortId={resort.id}></EditMenu>
-                                        <img alt={"Bin"} src={Bin} onClick={() => deleteResort(resort.id)}/></Box>)}
+                                        {userContext.currentUser?.roles.includes(Role.ADMIN)  &&
+                                            (<img alt={"Bin"} src={Bin} onClick={() => deleteResort(resort.id)}/>)}</Box>)}
                             </Box>)
                     })}
                     <Box display={"flex"}
