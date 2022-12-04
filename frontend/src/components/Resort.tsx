@@ -53,7 +53,7 @@ export const Resort = () => {
             method: "DELETE",
             url: `${process.env.REACT_APP_API_BASE_URL}/api/equipment/delete/${id}`
         });
-        context.isChangeModifier(true)
+        context.isChangedEquipmentModifier(true)
     }
     const navigate = useNavigate()
 
