@@ -117,7 +117,7 @@ export const Resort = () => {
                  marginTop='20px'>
                 <Box onClick={() => navigate('/resort')} display={"flex"} flexDirection={"row"} width='200px'>
                     <AddEquipment/></Box>
-                <button className={"buttonAdd"} onClick={()=>navigate("/cart")}>Proceed to Order
+                <button className={"buttonAdd"} onClick={()=>navigate("/cart")}>Proceed
                 </button>
 
             </Box>

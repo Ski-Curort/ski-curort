@@ -37,6 +37,7 @@ export const Confirmation = () => {
                             <Box>
                                 <p>Bill NO. {context.billData.id}</p>
                                 <p> Date: {now} </p>
+                                <p>Resort Name: {context.resortData.curortName}</p>
                             </Box>
                             <Box>
                                 <p>User name: {contextUser.currentUser?.displayName}</p>
