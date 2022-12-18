@@ -129,6 +129,11 @@ margin-top:50px ;
     padding: 10px 16px;
     gap: 8px;
 }
+.buttonAdd:hover {
+    background: #27588A;
+
+        cursor:pointer;
+}
 .selectSki{
     font-family: "Arial", serif;
     font-style: normal;

@@ -2,8 +2,9 @@ import {Box, Stack,} from "@chakra-ui/react";
 import "./StartPage.css";
 import {useNavigate} from "react-router-dom";
 import {DataContext} from "../App";
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Bin from "../files/Vector (1).png"
+import Bin1 from "../files/Vector (6).png"
 import {EditMenu} from "../models/editModal";
 import useUserContext from "../hooks/useUserContext";
 import {Role} from "../models/user";
@@ -11,6 +12,8 @@ import {AddMenu} from "../models/addModal";
 import {authorizedApi} from "../hooks/userAxios";
 import {AxiosResponse} from "axios/index";
 import {ResortData} from "../models/resorts";
+import Edit1 from "../files/Vector (5).png";
+import Edit from "../files/Vector.png";
 
 
 
@@ -19,7 +22,18 @@ export const StartPage = () => {
     const context = useContext(DataContext);
     const [resorts, setResorts] = useState([context.resortData]);
 
-
+    const buttonMouseOverHandler = (
+        event: React.MouseEvent<HTMLImageElement>
+    ) => {
+        const btn: HTMLImageElement = event.currentTarget;
+        btn.src = Bin1
+    };
+    const buttonMouseLeavHandler = (
+        event: React.MouseEvent<HTMLImageElement>
+    ) => {
+        const btn: HTMLImageElement = event.currentTarget;
+        btn.src = Bin
+    };
     useEffect(() => {
         authorizedApi({method: "GET",
             url: `${process.env.REACT_APP_API_BASE_URL}/api/curort/`})
@@ -56,9 +70,9 @@ export const StartPage = () => {
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
                                         {userContext.currentUser?.roles.includes(Role.ADMIN)  && (
-                                            <EditMenu resortId={resort.id}></EditMenu>)}
+                                            <EditMenu ResortData={context.resortData}></EditMenu>)}
                                         {userContext.currentUser?.roles.includes(Role.ADMIN)  &&
-                                            (<img alt={"Bin"} src={Bin} onClick={() => deleteResort(resort.id)}/>)}</Box>)}
+                                            (<img alt={"Bin"} src={Bin} onMouseOver={buttonMouseOverHandler} onMouseLeave={buttonMouseLeavHandler} onClick={() => deleteResort(resort.id)}/>)}</Box>)}
                             </Box>)
                     })}
                     <Box display={"flex"}
