@@ -70,7 +70,7 @@ export const StartPage = () => {
                                     <Box display={"flex"} flexDirection={"row"} width='75px'
                                          justifyContent={"space-between"}>
                                         {userContext.currentUser?.roles.includes(Role.ADMIN)  && (
-                                            <EditMenu ResortData={context.resortData}></EditMenu>)}
+                                            <EditMenu ResortData={resort}></EditMenu>)}
                                         {userContext.currentUser?.roles.includes(Role.ADMIN)  &&
                                             (<img alt={"Bin"} src={Bin} onMouseOver={buttonMouseOverHandler} onMouseLeave={buttonMouseLeavHandler} onClick={() => deleteResort(resort.id)}/>)}</Box>)}
                             </Box>)
