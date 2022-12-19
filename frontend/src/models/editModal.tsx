@@ -25,7 +25,7 @@ export function EditMenu(props: EditMenuProps) {
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
     const buttonMouseOverHandler = (
-        event: React.MouseEvent<HTMLImageElement>
+        event: React.MouseEvent<HTMLImageElement>,
     ) => {
         const btn: HTMLImageElement = event.currentTarget;
         btn.src = Edit1
@@ -60,6 +60,14 @@ export function EditMenu(props: EditMenuProps) {
             curortAdress: event.currentTarget.value,
         });
     };
+    const onResortCityChanged = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        context.resortDataModifier({
+            ...context.resortData,
+            curortCity: event.currentTarget.value,
+        });
+    };
     const onResortPhoneChanged = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -77,6 +85,7 @@ export function EditMenu(props: EditMenuProps) {
             data:
                 {
                     "curortName": context.resortData.curortName,
+                    "curortCity": context.resortData.curortCity,
                     "curortAdress": context.resortData.curortAdress,
                     "currortEmail": context.resortData.currortEmail,
                     "curortPhonenumber": context.resortData.curortPhonenumber
@@ -111,6 +120,11 @@ export function EditMenu(props: EditMenuProps) {
                                    onChange={onResortNameChanged}/>
                         </FormControl>
 
+                        <FormControl mt={4}>
+                            <FormLabel>City</FormLabel>
+                            <Input placeholder={props.ResortData.curortCity} value={context.resortData.curortCity}
+                                   onChange={onResortCityChanged}/>
+                        </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>Address</FormLabel>
                             <Input placeholder={props.ResortData.curortAdress} value={context.resortData.curortAdress}

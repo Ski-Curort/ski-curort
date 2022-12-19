@@ -21,9 +21,11 @@ export const Resort = () => {
     const[cartItems, setCartItems]=useState(context.cartItemData.items)
     const [equipments, setEquipments]=useState([context.equipmentData])
     const[weather, setWeather] = useState(context.weatherData);
+    const newCart=context.cartItemData
+    newCart.items.splice(0,1)
 
     useEffect(() => {
-        authorizedApi.get(`${process.env.REACT_APP_API_BASE_URL}/api/weather/${context.resortData.curortAdress}`
+        authorizedApi.get(`${process.env.REACT_APP_API_BASE_URL}/api/weather/${context.resortData.curortCity}`
         ).then((res: AxiosResponse<WeatherData>) => {
             setWeather(res.data)
 
@@ -38,14 +40,13 @@ export const Resort = () => {
             //context.equipmentDataModifier(equipments)
             context.isChangedEquipmentModifier(false)
             console.log(res.data)
-
         });
     }, [context.isChangedEquipment]);
 
     function addToCart(a:EquipmentData){
 
 
-        const newCart=context.cartItemData
+
         newCart.items.push(a)
         context.cartItemModifier(newCart)
 
