@@ -1,11 +1,9 @@
 package com.example.skicurort.bill;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BillRepo extends JpaRepository<Bill, Long> {
 
-Optional<Bill> findBillById(Long id);
-
+  Optional<Bill> findBillById(Long id);
 }
