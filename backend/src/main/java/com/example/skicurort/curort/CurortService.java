@@ -41,6 +41,7 @@ public class CurortService {
     Curort curort = curortRepo.findById(id).orElseThrow(() -> new NoIdException(id));
 
     curort.setCurortName(curortDTO.curortName());
+    curort.setCurortCity(curortDTO.curortCity());
     curort.setCurortAdress(curortDTO.curortAdress());
     curort.setCurortPhonenumber(curortDTO.curortPhonenumber());
     curort.setCurrortEmail(curortDTO.currortEmail());

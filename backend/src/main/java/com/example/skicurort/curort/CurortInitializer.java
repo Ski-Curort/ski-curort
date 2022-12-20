@@ -14,12 +14,11 @@ public class CurortInitializer implements InitializingBean {
   public void afterPropertiesSet() throws Exception {
     curortService.save(
         new CurortDTO(
-            null, "Ski resort in Zakopane", "Zakopane", "zakopane@ski-resort.com", 123123120L));
+            null, "Zakopane", "Zakopane", "Długa ", "zakopane@ski-resort.com", 123123120L));
     curortService.save(
         new CurortDTO(
-            null, "Ski resort in Zieleniec", "Zieleniec", "zieleniec@ski-resort.com", 123123121L));
+            null, "Zieleniec", "Zieleniec", "Długa ", "zieleniec@ski-resort.com", 123123121L));
     curortService.save(
-        new CurortDTO(
-            null, "Ski resort in Karpacz", "Karpacz", "karpacz@ski-resort.com", 123123122L));
+        new CurortDTO(null, "Karpacz", "Karpacz", "Długa ", "karpacz@ski-resort.com", 123123122L));
   }
 }

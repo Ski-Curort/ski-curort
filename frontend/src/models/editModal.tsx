@@ -10,19 +10,32 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import Edit from "../files/Vector.png";
-import React, {useContext} from "react";
+import Edit1 from "../files/Vector (5).png";
+import React, {CSSProperties, ImgHTMLAttributes, useContext} from "react";
 import {DataContext} from "../App";
 import {authorizedApi} from "../hooks/userAxios";
+import {ResortData} from "./resorts";
 
 interface EditMenuProps {
-    resortId: number
+    ResortData:ResortData
 }
 
 export function EditMenu(props: EditMenuProps) {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
     const context = useContext(DataContext);
-
+    const buttonMouseOverHandler = (
+        event: React.MouseEvent<HTMLImageElement>,
+    ) => {
+        const btn: HTMLImageElement = event.currentTarget;
+        btn.src = Edit1
+    };
+    const buttonMouseLeavHandler = (
+        event: React.MouseEvent<HTMLImageElement>
+    ) => {
+        const btn: HTMLImageElement = event.currentTarget;
+        btn.src = Edit
+    };
     const onResortNameChanged = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -47,6 +60,14 @@ export function EditMenu(props: EditMenuProps) {
             curortAdress: event.currentTarget.value,
         });
     };
+    const onResortCityChanged = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        context.resortDataModifier({
+            ...context.resortData,
+            curortCity: event.currentTarget.value,
+        });
+    };
     const onResortPhoneChanged = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -64,6 +85,7 @@ export function EditMenu(props: EditMenuProps) {
             data:
                 {
                     "curortName": context.resortData.curortName,
+                    "curortCity": context.resortData.curortCity,
                     "curortAdress": context.resortData.curortAdress,
                     "currortEmail": context.resortData.currortEmail,
                     "curortPhonenumber": context.resortData.curortPhonenumber
@@ -79,7 +101,7 @@ export function EditMenu(props: EditMenuProps) {
     return (
         <>
 
-            <img alt={"Edit"} src={Edit} onClick={onOpen
+            <img alt={"Edit"} src={Edit} onMouseOver={buttonMouseOverHandler} onMouseLeave={buttonMouseLeavHandler} onClick={onOpen
             }/>
 
             <Modal
@@ -94,23 +116,28 @@ export function EditMenu(props: EditMenuProps) {
                     <ModalBody pb={6}>
                         <FormControl>
                             <FormLabel>Resort Name</FormLabel>
-                            <Input placeholder='Resort name' value={context.resortData.curortName}
+                            <Input placeholder={props.ResortData.curortName} value={context.resortData.curortName}
                                    onChange={onResortNameChanged}/>
                         </FormControl>
 
                         <FormControl mt={4}>
+                            <FormLabel>City</FormLabel>
+                            <Input placeholder={props.ResortData.curortCity} value={context.resortData.curortCity}
+                                   onChange={onResortCityChanged}/>
+                        </FormControl>
+                        <FormControl mt={4}>
                             <FormLabel>Address</FormLabel>
-                            <Input placeholder='Address' value={context.resortData.curortAdress}
+                            <Input placeholder={props.ResortData.curortAdress} value={context.resortData.curortAdress}
                                    onChange={onResortAddressChanged}/>
                         </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>Phone number</FormLabel>
-                            <Input placeholder='Phone number' value={context.resortData.curortPhonenumber}
+                            <Input placeholder={props.ResortData.curortPhonenumber.toString()} value={context.resortData.curortPhonenumber}
                                    onChange={onResortPhoneChanged}/>
                         </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>E-mail</FormLabel>
-                            <Input placeholder='E-mail'
+                            <Input placeholder={props.ResortData.currortEmail}
                                    value={context.resortData.currortEmail}
                                    onChange={onResortEmailChanged}/>
                         </FormControl>
@@ -118,7 +145,7 @@ export function EditMenu(props: EditMenuProps) {
 
                     <ModalFooter>
                         <Button className={"button"} colorScheme='blue' mr={3}
-                                onClick={() => handleClic(props.resortId)}>
+                                onClick={() => handleClic(props.ResortData.id)}>
                             Edit
                         </Button>
                         <Button className={"button"} onClick={onClose}>Cancel</Button>

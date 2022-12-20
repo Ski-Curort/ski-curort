@@ -50,11 +50,12 @@ export const Cart = () => {
 
 
     return (
-        <Box>
+        <Box backgroundColor={"#F8F8F8"}  display={"flex"} flexDirection={"column"} alignItems={"center"}
+             boxShadow='4px'>
             <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
                 <p className={"summary"}>Summary:</p>
 
-                <Box width='908px'>
+                <Box  backgroundColor={"white"} width='908px'>
                     <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                          flexDirection={"row"} marginTop='12px' marginBottom='12px'>
                         <Box width='230px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>

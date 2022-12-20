@@ -42,6 +42,7 @@ interface DataContext {
 export const DataContext = createContext<DataContext>({
     resortData: {
         curortAdress: "",
+        curortCity: "",
         curortName: "",
         curortPhonenumber: 0,
         currortEmail: "",
@@ -61,6 +62,7 @@ export const DataContext = createContext<DataContext>({
         creationData: "",
         curort: {
             curortAdress: "",
+            curortCity: "",
             curortName: "",
             curortPhonenumber: 0,
             currortEmail: "",
@@ -130,6 +132,7 @@ function App() {
     };
     const [resortData, setResortData] = useState<ResortData>({
         curortAdress: "",
+        curortCity: "",
         curortName: "",
         curortPhonenumber: 0,
         currortEmail: "",
@@ -160,6 +163,7 @@ function App() {
         creationData: "",
         curort: {
             curortAdress: "",
+            curortCity: "",
             curortName: "",
             curortPhonenumber: 0,
             currortEmail: "",
