@@ -28,10 +28,10 @@ export const Confirmation = () => {
     }
 
     return (
-        <Box>
+        <Box backgroundColor={"#F8F8F8"}>
 
-            <Box>
-                <Box display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
+            <Box >
+                <Box  display={"flex"} justifyContent={"center"} flexDirection={"column"} alignItems={"center"}>
                     <Box> <p className={"summary"}>Confirmation:</p>
                         <Box>
                             <Box>
@@ -46,7 +46,7 @@ export const Confirmation = () => {
                         </Box>
                     </Box>
                     <Box></Box>
-                    <Box width='908px'>
+                    <Box width='908px' backgroundColor={"white"}>
                         <Box className={"summaryBar"} background={"white"} height='40px' display={"flex"}
                              flexDirection={"row"} marginTop='12px' marginBottom='12px'>
                             <Box width='280px' marginLeft='16px' paddingLeft='24px'>Equipment Type</Box>

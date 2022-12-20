@@ -48,7 +48,8 @@ export const Wrapper = () => {
 
   return (
     <div className="container">
-      <Box className={"navBar"}>
+
+      <Box className={"navBar"} >
         <Link to={"/"}>
           <img className={"logo"} src={Logo} alt="logo"></img>
         </Link>
@@ -95,6 +96,7 @@ export const Wrapper = () => {
         </Box>
       </Box>
       <Outlet />
+
     </div>
   );
 };

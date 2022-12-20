@@ -15,7 +15,7 @@ public class CurortInitializer implements InitializingBean {
     curortService.save(
         new CurortDTO(
             null,
-            "Ski resort in Zakopane",
+            "Zakopane",
             "Zakopane",
             "Długa ",
             "zakopane@ski-resort.com",
@@ -23,7 +23,7 @@ public class CurortInitializer implements InitializingBean {
     curortService.save(
         new CurortDTO(
             null,
-            "Ski resort in Zieleniec",
+            "Zieleniec",
             "Zieleniec",
             "Długa ",
             "zieleniec@ski-resort.com",
@@ -31,7 +31,7 @@ public class CurortInitializer implements InitializingBean {
     curortService.save(
         new CurortDTO(
             null,
-            "Ski resort in Karpacz",
+            "Karpacz",
             "Karpacz",
             "Długa ",
             "karpacz@ski-resort.com",
