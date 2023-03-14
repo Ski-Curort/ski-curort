@@ -1,7 +1,10 @@
-.container{
+.container {
     height: 100vh;
+    background-color: #F8F8F8;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
 }
-
 .menu-wraper{
     display: flex;
     flex-direction: row;
@@ -10,6 +13,7 @@
     padding: 16px;
     height: 5vh;
     background-color: #eeeeee;
+
 }
 
 .nav-logged {

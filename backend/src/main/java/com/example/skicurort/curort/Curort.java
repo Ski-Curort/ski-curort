@@ -27,6 +27,9 @@ public class Curort {
   @Column(name = "curort_name")
   private String curortName;
 
+  @Column(name = "curort_city")
+  private String curortCity;
+
   @Column(name = "curort_address")
   private String curortAdress;
 

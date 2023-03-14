@@ -9,6 +9,7 @@ public class CurortMapper {
     return new CurortDTO(
         curort.getId(),
         curort.getCurortName(),
+        curort.getCurortCity(),
         curort.getCurortAdress(),
         curort.getCurrortEmail(),
         curort.getCurortPhonenumber());
@@ -17,6 +18,7 @@ public class CurortMapper {
   static Curort mapToEntity(CurortDTO curortDto) {
     Curort curort = new Curort();
     curort.setCurortName(curortDto.curortName());
+    curort.setCurortCity(curortDto.curortCity());
     curort.setCurortAdress(curortDto.curortAdress());
     curort.setCurortPhonenumber(curortDto.curortPhonenumber());
     curort.setCurrortEmail(curortDto.currortEmail());

@@ -36,6 +36,6 @@ public class BillService {
   }
 
   public BillDto findByBillId(Long id) {
-    return mapToDTO(Optional.ofNullable(billRepo.findBillById(id)));
+    return mapToDTO(billRepo.findBillById(id));
   }
 }

@@ -25,6 +25,7 @@ export function AddMenu() {
     const context = useContext(DataContext);
     const userContext = useUserContext();
 
+
     const onResortNameChanged = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -49,6 +50,14 @@ export function AddMenu() {
             curortAdress: event.currentTarget.value,
         });
     };
+    const onResortCityChanged = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        context.resortDataModifier({
+            ...context.resortData,
+            curortCity: event.currentTarget.value,
+        });
+    };
     const onResortPhoneChanged = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -61,6 +70,7 @@ export function AddMenu() {
     async function handleClic() {
         authorizedApi.post(`${process.env.REACT_APP_API_BASE_URL}/api/curort/`, {
             curortName: context.resortData.curortName,
+            curortCity: context.resortData.curortCity,
             curortAdress: context.resortData.curortAdress,
             currortEmail: context.resortData.currortEmail,
             curortPhonenumber: context.resortData.curortPhonenumber
@@ -96,6 +106,11 @@ export function AddMenu() {
                                    onChange={onResortNameChanged}/>
                         </FormControl>
 
+                        <FormControl mt={4}>
+                            <FormLabel>City</FormLabel>
+                            <Input placeholder='City' value={context.resortData.curortCity}
+                                   onChange={onResortCityChanged}/>
+                        </FormControl>
                         <FormControl mt={4}>
                             <FormLabel>Address</FormLabel>
                             <Input placeholder='Address' value={context.resortData.curortAdress}
